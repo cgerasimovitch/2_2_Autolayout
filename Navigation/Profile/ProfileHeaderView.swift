@@ -44,6 +44,7 @@ class ProfileHeaderView: UIView {
         
         required init?(coder: NSCoder) {
             super.init(coder: coder)
+            setupNewButton()
         }
         
     func setupImageView(){
@@ -89,11 +90,33 @@ class ProfileHeaderView: UIView {
         addSubview(setStatusButton)
     }
     
+    func setupNewButton(){
+        let newButton = UIButton()
+        addSubview(newButton)
+        newButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        newButton.frame.size = CGSize(width: 100, height: 50)
+        
+        newButton.setTitle("New button title", for: .normal)
+        newButton.backgroundColor = .yellow
+        newButton.bottomAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+        newButton.leftAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.leftAnchor).isActive = true
+        newButton.rightAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.rightAnchor).isActive = true
+        
+    }
         
         @objc func buttonPressed(sender: UIButton!) {
-            print("Status is: \(statusUILabel.text)")
+            print("Status is: \(self.statusLabel.text)")
             
             
         }
+    
+    /*Программно добавить новую UIButton, изменить title и задать следующие правила отображения с помощью кода:
+    Слева и справа нулевые отступы;
+    Снизу привязать к Safe Area.*/
+    
+    
+    //setStatusButton.frame = CGRect(x: 16, y: 100, width: 400 - 32, height: 50)
+    
 
 }
