@@ -16,8 +16,61 @@
                     <view key="view" contentMode="scaleToFill" id="z6I-Co-0n3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eFo-Yp-VVB" customClass="ProfileHeaderView" customModule="Navigation" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="414" height="220"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pWe-J4-3tB">
+                                        <rect key="frame" x="16" y="16" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="JJF-Bf-Cq5"/>
+                                            <constraint firstAttribute="height" constant="100" id="NMe-PO-8rm"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQT-hL-rm0">
+                                        <rect key="frame" x="136" y="27" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MoU-uc-TLn">
+                                        <rect key="frame" x="136" y="77" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ol-nv-ply">
+                                        <rect key="frame" x="16" y="132" width="382" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="MoU-uc-TLn" firstAttribute="bottom" secondItem="pWe-J4-3tB" secondAttribute="bottom" constant="-18" id="88n-if-k7n"/>
+                                    <constraint firstItem="6Ol-nv-ply" firstAttribute="top" secondItem="pWe-J4-3tB" secondAttribute="bottom" constant="16" id="AH3-EW-rEj"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Ol-nv-ply" secondAttribute="trailing" constant="16" id="G3Q-j8-JNh"/>
+                                    <constraint firstItem="pWe-J4-3tB" firstAttribute="leading" secondItem="eFo-Yp-VVB" secondAttribute="leading" constant="16" id="Mpa-KS-ctE"/>
+                                    <constraint firstItem="AQT-hL-rm0" firstAttribute="leading" secondItem="pWe-J4-3tB" secondAttribute="trailing" constant="20" id="OVN-8q-ouy"/>
+                                    <constraint firstAttribute="height" constant="220" id="Stb-Lc-hgx"/>
+                                    <constraint firstItem="MoU-uc-TLn" firstAttribute="leading" secondItem="AQT-hL-rm0" secondAttribute="leading" id="VVd-wX-Gd2"/>
+                                    <constraint firstItem="pWe-J4-3tB" firstAttribute="top" secondItem="eFo-Yp-VVB" secondAttribute="top" constant="16" id="a7T-rF-F7b"/>
+                                    <constraint firstItem="AQT-hL-rm0" firstAttribute="top" secondItem="eFo-Yp-VVB" secondAttribute="top" constant="27" id="cFs-9O-Aks"/>
+                                    <constraint firstItem="6Ol-nv-ply" firstAttribute="leading" secondItem="eFo-Yp-VVB" secondAttribute="leading" constant="16" id="i53-g6-V3S"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="avatarImageView" destination="pWe-J4-3tB" id="wyd-Ug-2Ed"/>
+                                    <outlet property="fullNameLabel" destination="AQT-hL-rm0" id="Yry-lL-M3F"/>
+                                    <outlet property="setStatusButton" destination="6Ol-nv-ply" id="se0-fG-ukF"/>
+                                    <outlet property="statusLabel" destination="MoU-uc-TLn" id="JqF-RX-h2e"/>
+                                </connections>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="FCL-IZ-fe8"/>
                         <color key="backgroundColor" systemColor="systemTealColor"/>
+                        <constraints>
+                            <constraint firstItem="FCL-IZ-fe8" firstAttribute="trailing" secondItem="eFo-Yp-VVB" secondAttribute="trailing" id="mRc-o8-DE6"/>
+                            <constraint firstItem="eFo-Yp-VVB" firstAttribute="leading" secondItem="FCL-IZ-fe8" secondAttribute="leading" id="v54-Og-UUs"/>
+                            <constraint firstItem="eFo-Yp-VVB" firstAttribute="top" secondItem="FCL-IZ-fe8" secondAttribute="top" id="vau-pM-Rec"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="TPi-FS-zh0"/>
                 </viewController>
