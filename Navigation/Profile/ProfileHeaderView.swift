@@ -77,9 +77,9 @@ class ProfileHeaderView: UIView {
         setStatusButton.frame = CGRect(x: 16, y: 100, width: 400 - 32, height: 50)
         setStatusButton.titleLabel?.font = .systemFont(ofSize: statusUILabel.font.pointSize, weight: .regular)
         setStatusButton.setTitle("Show status", for: .normal)
-        setStatusButton.titleLabel?.textColor = .white
+        setStatusButton.setTitleColor(.white, for: .normal)
         setStatusButton.titleLabel?.textAlignment = .center
-        setStatusButton.backgroundColor = .blue
+        setStatusButton.backgroundColor = .link
         setStatusButton.layer.cornerRadius = 4
         setStatusButton.layer.shadowOffset = CGSize(width: 4, height: 4)
         setStatusButton.layer.shadowRadius = 4
