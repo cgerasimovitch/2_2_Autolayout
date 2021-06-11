@@ -12,10 +12,20 @@ class LogInViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .cyan
+        self.view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
-
+        setupUIImageView()
         // Do any additional setup after loading the view.
+    }
+    
+    
+    func setupUIImageView(){
+        let logoImageView = UIImageView()
+        let image = UIImage(named: "logo.png")
+        logoImageView.image = image
+        logoImageView.frame.size = CGSize(width: 100, height: 100)
+        self.view.addSubview(logoImageView)
+        
     }
     
 
