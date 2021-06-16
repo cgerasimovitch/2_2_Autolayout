@@ -10,57 +10,124 @@ import UIKit
 
 class LogInViewController: UIViewController {
 
+    let logoImageView = UIImageView()
+    let fieldsView = UIView()
+    let loginTextField = UITextField()
+    let border = UIView()
+    let passwordTextField = UITextField()
+    let loginButton = UIButton()
+    let scrollView = UIScrollView()
+    let containerView = UIView()
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
-        setupUIImageView()
-        //setupFieldsView()
-        // Do any additional setup after loading the view.
+        setupScrollandContainer(scroll: scrollView, container: containerView)
+        setupImageView(imageView: logoImageView)
+        setupFieldsView(uiview: fieldsView)
+        setupLoginTextField(field: loginTextField)
+        setupInfieldBorder(uiview: border)
+        setupPasswordField(field: passwordTextField)
+        setupLogInButton(button: loginButton)
+        
     }
-
     
-    func setupUIImageView(){
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    
+    
+    @objc private func keyboardWillShow(notification: NSNotification){
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue{
+            scrollView.contentInset.bottom = keyboardSize.height
+            scrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+        }
+    }
+    
+    @objc private func keyboardWillHide(notification: NSNotification){
+        scrollView.contentInset.bottom = .zero
+        scrollView.verticalScrollIndicatorInsets = .zero
+    }
+    
+    
+    func setupScrollandContainer(scroll: UIScrollView, container: UIView){
         
-        let logoImageView = UIImageView()
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(scroll)
+        
+        scroll.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        scroll.translatesAutoresizingMaskIntoConstraints = false
+        scroll.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        scroll.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        scroll.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        scroll.addSubview(container)
+        container.translatesAutoresizingMaskIntoConstraints = false
+        container.topAnchor.constraint(equalTo: scroll.topAnchor).isActive = true
+        container.leadingAnchor.constraint(equalTo: scroll.leadingAnchor).isActive = true
+        container.trailingAnchor.constraint(equalTo: scroll.trailingAnchor).isActive = true
+        container.centerXAnchor.constraint(equalTo: scroll.centerXAnchor).isActive = true
+        container.bottomAnchor.constraint(equalTo: scroll.bottomAnchor).isActive = true
+        container.backgroundColor = .red
+        container.addSubview(logoImageView)
+        container.addSubview(fieldsView)
+        container.addSubview(loginTextField)
+        container.addSubview(border)
+        container.addSubview(passwordTextField)
+        container.addSubview(loginButton)
+        
+    }
+    
+    func setupImageView(imageView: UIImageView){
+        view.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         let image = UIImage(named: "logo.png")
-        logoImageView.image = image
-        view.addSubview(logoImageView)
-       
-        logoImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        logoImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        logoImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        logoImageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 120).isActive = true
-       
+        imageView.image = image
+        imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        imageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 120).isActive = true
+    }
+    
+    func setupFieldsView(uiview: UIView){
+        view.addSubview(uiview)
+        uiview.translatesAutoresizingMaskIntoConstraints = false
+        uiview.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        uiview.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
+        uiview.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
+        uiview.topAnchor.constraint(equalTo: self.logoImageView.bottomAnchor, constant: 120).isActive = true
+        uiview.backgroundColor = .systemGray6
+        uiview.layer.borderColor = UIColor.lightGray.cgColor
+        uiview.layer.borderWidth = 0.5
+        uiview.layer.cornerRadius = 10
+        uiview.clipsToBounds = true
+    }
+    
+    func setupLoginTextField(field: UITextField){
+        field.translatesAutoresizingMaskIntoConstraints = false
+        fieldsView.addSubview(field)
+        field.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        field.leadingAnchor.constraint(equalTo: fieldsView.safeAreaLayoutGuide.leadingAnchor, constant: 5).isActive = true
+        field.trailingAnchor.constraint(equalTo: fieldsView.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        field.topAnchor.constraint(equalTo: fieldsView.topAnchor).isActive = true
+        field.placeholder = "Email or phone"
+        field.textColor = .black
+        field.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        field.autocapitalizationType = .none
+    }
+    
+    func setupInfieldBorder(uiview: UIView){
         
-        let fieldsView = UIView()
-        fieldsView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(fieldsView)
-        
-        fieldsView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        fieldsView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
-        fieldsView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
-        fieldsView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 120).isActive = true
-        fieldsView.backgroundColor = .systemGray6
-        fieldsView.layer.borderColor = UIColor.lightGray.cgColor
-        fieldsView.layer.borderWidth = 0.5
-        fieldsView.layer.cornerRadius = 10
-        fieldsView.clipsToBounds = true
-        
-        let loginTextField = UITextField()
-        loginTextField.translatesAutoresizingMaskIntoConstraints = false
-        fieldsView.addSubview(loginTextField)
-        loginTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        loginTextField.leadingAnchor.constraint(equalTo: fieldsView.safeAreaLayoutGuide.leadingAnchor, constant: 5).isActive = true
-        loginTextField.trailingAnchor.constraint(equalTo: fieldsView.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        loginTextField.topAnchor.constraint(equalTo: fieldsView.topAnchor).isActive = true
-        loginTextField.placeholder = "Email or phone"
-        loginTextField.textColor = .black
-        loginTextField.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        loginTextField.autocapitalizationType = .none
-        
-        let border = UIView()
         fieldsView.addSubview(border)
         border.backgroundColor = UIColor.lightGray
         border.translatesAutoresizingMaskIntoConstraints = false
@@ -68,24 +135,23 @@ class LogInViewController: UIViewController {
         border.leadingAnchor.constraint(equalTo: fieldsView.safeAreaLayoutGuide.leadingAnchor).isActive = true
         border.centerYAnchor.constraint(equalTo: fieldsView.centerYAnchor).isActive = true
         border.trailingAnchor.constraint(equalTo: fieldsView.safeAreaLayoutGuide.trailingAnchor).isActive = true
+    }
+    
+    func setupPasswordField(field: UITextField){
+        field.translatesAutoresizingMaskIntoConstraints = false
+        fieldsView.addSubview(field)
+        field.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        field.leadingAnchor.constraint(equalTo: fieldsView.safeAreaLayoutGuide.leadingAnchor, constant: 5).isActive = true
+        field.trailingAnchor.constraint(equalTo: fieldsView.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        field.bottomAnchor.constraint(equalTo: fieldsView.bottomAnchor).isActive = true
+        field.placeholder = "Password"
+        field.isSecureTextEntry = true
+        field.textColor = .black
+        field.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+    }
+    
+    func setupLogInButton(button: UIButton){
         
-        
-        
-        let passwordTextField = UITextField()
-        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        fieldsView.addSubview(passwordTextField)
-        passwordTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        passwordTextField.leadingAnchor.constraint(equalTo: fieldsView.safeAreaLayoutGuide.leadingAnchor, constant: 5).isActive = true
-        passwordTextField.trailingAnchor.constraint(equalTo: fieldsView.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        passwordTextField.bottomAnchor.constraint(equalTo: fieldsView.bottomAnchor).isActive = true
-        passwordTextField.placeholder = "Password"
-        passwordTextField.isSecureTextEntry = true
-        passwordTextField.textColor = .black
-        
-        passwordTextField.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        
-       
-        let loginButton = UIButton()
         view.addSubview(loginButton)
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         let pixelImage = UIImage(named: "blue_pixel.png")
