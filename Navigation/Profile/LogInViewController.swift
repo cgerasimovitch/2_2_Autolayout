@@ -89,7 +89,7 @@ class LogInViewController: UIViewController {
     }
     
     func setupImageView(imageView: UIImageView){
-        view.addSubview(imageView)
+        //containerView.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         let image = UIImage(named: "logo.png")
         imageView.image = image
@@ -100,7 +100,7 @@ class LogInViewController: UIViewController {
     }
     
     func setupFieldsView(uiview: UIView){
-        view.addSubview(uiview)
+        //containerView.addSubview(uiview)
         uiview.translatesAutoresizingMaskIntoConstraints = false
         uiview.heightAnchor.constraint(equalToConstant: 100).isActive = true
         uiview.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
