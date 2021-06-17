@@ -67,11 +67,19 @@
                                     <outlet property="statusLabel" destination="MoU-uc-TLn" id="JqF-RX-h2e"/>
                                 </connections>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fCB-Ey-hLU">
+                                <rect key="frame" x="0.0" y="272" width="414" height="590"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FCL-IZ-fe8"/>
                         <color key="backgroundColor" systemColor="systemTealColor"/>
                         <constraints>
+                            <constraint firstItem="fCB-Ey-hLU" firstAttribute="leading" secondItem="FCL-IZ-fe8" secondAttribute="leading" id="G0F-b1-Npj"/>
+                            <constraint firstItem="FCL-IZ-fe8" firstAttribute="bottom" secondItem="fCB-Ey-hLU" secondAttribute="bottom" id="G2b-EU-4EQ"/>
+                            <constraint firstItem="FCL-IZ-fe8" firstAttribute="trailing" secondItem="fCB-Ey-hLU" secondAttribute="trailing" id="dns-KD-0Wh"/>
                             <constraint firstItem="FCL-IZ-fe8" firstAttribute="trailing" secondItem="eFo-Yp-VVB" secondAttribute="trailing" id="mRc-o8-DE6"/>
+                            <constraint firstItem="fCB-Ey-hLU" firstAttribute="top" secondItem="eFo-Yp-VVB" secondAttribute="bottom" constant="8" symbolic="YES" id="mt1-lF-K7l"/>
                             <constraint firstItem="eFo-Yp-VVB" firstAttribute="leading" secondItem="FCL-IZ-fe8" secondAttribute="leading" id="v54-Og-UUs"/>
                             <constraint firstItem="eFo-Yp-VVB" firstAttribute="top" secondItem="FCL-IZ-fe8" secondAttribute="top" id="vau-pM-Rec"/>
                         </constraints>
