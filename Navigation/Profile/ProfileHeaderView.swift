@@ -101,9 +101,9 @@ class ProfileHeaderView: UIView {
         newButton.setTitleColor(.black, for: .normal)
         newButton.backgroundColor = .yellow
         newButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        newButton.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor).isActive = true
-        newButton.leadingAnchor.constraint(lessThanOrEqualTo: self.leadingAnchor).isActive = true
-        newButton.trailingAnchor.constraint(lessThanOrEqualTo: self.trailingAnchor).isActive = true
+        newButton.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        newButton.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        newButton.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         
     }
         
