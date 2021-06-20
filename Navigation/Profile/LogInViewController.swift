@@ -64,13 +64,13 @@ class LogInViewController: UIViewController {
     
     func setupScrollandContainer(scroll: UIScrollView, container: UIView){
         
-        self.view.addSubview(scroll)
-        
-        scroll.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        view.addSubview(scroll)
+        scroll.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         scroll.translatesAutoresizingMaskIntoConstraints = false
-        scroll.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        scroll.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        scroll.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        scroll.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        scroll.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        scroll.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        scroll.contentSize = container.frame.size
         scroll.addSubview(container)
         container.translatesAutoresizingMaskIntoConstraints = false
         container.topAnchor.constraint(equalTo: scroll.topAnchor).isActive = true
@@ -81,9 +81,7 @@ class LogInViewController: UIViewController {
         container.backgroundColor = .red
         container.addSubview(logoImageView)
         container.addSubview(fieldsView)
-        container.addSubview(loginTextField)
-        container.addSubview(border)
-        container.addSubview(passwordTextField)
+
         container.addSubview(loginButton)
         
     }
@@ -100,7 +98,7 @@ class LogInViewController: UIViewController {
     }
     
     func setupFieldsView(uiview: UIView){
-        //containerView.addSubview(uiview)
+        scrollView.addSubview(uiview)
         uiview.translatesAutoresizingMaskIntoConstraints = false
         uiview.heightAnchor.constraint(equalToConstant: 100).isActive = true
         uiview.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
