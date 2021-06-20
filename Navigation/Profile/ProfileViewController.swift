@@ -2,8 +2,8 @@
 //  ProfileViewController.swift
 //  Navigation
 //
-//  Created by Admin on 6/9/21.
-//  Copyright © 2021 Artem Novichkov. All rights reserved.
+//  Created by Cheslau Gerasimovitch
+//  Task 2_3
 //
 
 import UIKit
