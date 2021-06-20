@@ -28,37 +28,50 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQT-hL-rm0">
-                                        <rect key="frame" x="136" y="27" width="42" height="21"/>
+                                        <rect key="frame" x="136" y="27" width="270" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MoU-uc-TLn">
-                                        <rect key="frame" x="136" y="77" width="42" height="21"/>
+                                        <rect key="frame" x="136" y="77" width="270" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ol-nv-ply">
-                                        <rect key="frame" x="16" y="132" width="382" height="50"/>
+                                        <rect key="frame" x="24" y="170" width="382" height="50"/>
                                         <color key="backgroundColor" systemColor="linkColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="ScS-h1-Txs"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                     </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ozt-cT-Vif">
+                                        <rect key="frame" x="136" y="115" width="270" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="txI-YD-Qzp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="6Ol-nv-ply" firstAttribute="top" secondItem="Ozt-cT-Vif" secondAttribute="bottom" constant="15" id="6he-E0-8Cf"/>
                                     <constraint firstItem="MoU-uc-TLn" firstAttribute="bottom" secondItem="pWe-J4-3tB" secondAttribute="bottom" constant="-18" id="88n-if-k7n"/>
-                                    <constraint firstItem="6Ol-nv-ply" firstAttribute="top" secondItem="pWe-J4-3tB" secondAttribute="bottom" constant="16" id="AH3-EW-rEj"/>
-                                    <constraint firstAttribute="trailing" secondItem="6Ol-nv-ply" secondAttribute="trailing" constant="16" id="G3Q-j8-JNh"/>
+                                    <constraint firstItem="Ozt-cT-Vif" firstAttribute="top" secondItem="MoU-uc-TLn" secondAttribute="bottom" constant="17" id="CKO-oq-SY1"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Ol-nv-ply" secondAttribute="trailing" constant="8" id="G3Q-j8-JNh"/>
                                     <constraint firstItem="pWe-J4-3tB" firstAttribute="leading" secondItem="eFo-Yp-VVB" secondAttribute="leading" constant="16" id="Mpa-KS-ctE"/>
                                     <constraint firstItem="AQT-hL-rm0" firstAttribute="leading" secondItem="pWe-J4-3tB" secondAttribute="trailing" constant="20" id="OVN-8q-ouy"/>
                                     <constraint firstAttribute="height" constant="220" id="Stb-Lc-hgx"/>
                                     <constraint firstItem="MoU-uc-TLn" firstAttribute="leading" secondItem="AQT-hL-rm0" secondAttribute="leading" id="VVd-wX-Gd2"/>
+                                    <constraint firstItem="Ozt-cT-Vif" firstAttribute="leading" secondItem="MoU-uc-TLn" secondAttribute="leading" id="Vdi-Va-FoW"/>
                                     <constraint firstItem="pWe-J4-3tB" firstAttribute="top" secondItem="eFo-Yp-VVB" secondAttribute="top" constant="16" id="a7T-rF-F7b"/>
                                     <constraint firstItem="AQT-hL-rm0" firstAttribute="top" secondItem="eFo-Yp-VVB" secondAttribute="top" constant="27" id="cFs-9O-Aks"/>
-                                    <constraint firstItem="6Ol-nv-ply" firstAttribute="leading" secondItem="eFo-Yp-VVB" secondAttribute="leading" constant="16" id="i53-g6-V3S"/>
+                                    <constraint firstItem="MoU-uc-TLn" firstAttribute="trailing" secondItem="AQT-hL-rm0" secondAttribute="trailing" id="eLi-Ec-RnC"/>
+                                    <constraint firstItem="6Ol-nv-ply" firstAttribute="leading" secondItem="eFo-Yp-VVB" secondAttribute="leading" constant="24" id="i53-g6-V3S"/>
+                                    <constraint firstItem="Ozt-cT-Vif" firstAttribute="trailing" secondItem="AQT-hL-rm0" secondAttribute="trailing" id="o8J-UH-6GD"/>
+                                    <constraint firstItem="Ozt-cT-Vif" firstAttribute="trailing" secondItem="6Ol-nv-ply" secondAttribute="trailing" id="s3O-Zc-hVF"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="avatarImageView" destination="pWe-J4-3tB" id="wyd-Ug-2Ed"/>

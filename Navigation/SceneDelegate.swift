@@ -4,6 +4,9 @@
 //
 //  Created by Artem Novichkov on 12.09.2020.
 //  Copyright © 2020 Artem Novichkov. All rights reserved.
+
+//Updated by Cheslau Gerasimovitch at 20.06.2021. Task 2_2
+
 //
 
 import UIKit

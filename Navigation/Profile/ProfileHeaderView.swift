@@ -12,69 +12,62 @@ class ProfileHeaderView: UIView {
 
     let statusUILabel = UILabel()
     @IBOutlet weak var avatarImageView: UIImageView!{
-        didSet{
-            setupImageView()
-        }
+        didSet{setupImageView(imageView: avatarImageView)}
     }
     
-
-    
     @IBOutlet weak var fullNameLabel: UILabel!{
-        didSet{
-            setupFullNameLabel()
-        }
+        didSet{ setupFullNameLabel()}
     }
     
     @IBOutlet weak var statusLabel: UILabel!{
-        didSet{
-            setupStatusLabel()
-        }
+        didSet{setupStatusLabel()}
     }
     
     @IBOutlet weak var setStatusButton: UIButton!{
-        didSet{
-            setupSetStatusButton()
-        }
+        didSet{setupSetStatusButton()}
+    }
+    
+    @IBOutlet weak var statusTextField: UITextField!{
+        didSet{setupStatusTextField()}
     }
     
     
-        override init(frame: CGRect) {
-            super.init(frame: frame)
-        }
+        override init(frame: CGRect) {super.init(frame: frame)}
         
         required init?(coder: NSCoder) {
             super.init(coder: coder)
             setupNewButton()
         }
         
-    func setupImageView(){
+    func setupImageView(imageView: UIImageView){
         let imageName = "cat.png"
         let image = UIImage(named: imageName)
-        avatarImageView.image = image
-        avatarImageView.layer.borderColor = UIColor.white.cgColor
-        avatarImageView.layer.borderWidth = 3
-        avatarImageView.layer.cornerRadius = 50
-        addSubview(avatarImageView)
+        addSubview(imageView)
+        imageView.image = image
+        imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.layer.borderWidth = 3
+        imageView.layer.cornerRadius = 50
+       
     }
     
     func setupFullNameLabel(){
-        //Add headerUILabel
-        
+        addSubview(fullNameLabel)
         fullNameLabel.font = .systemFont(ofSize: 18, weight: .bold)
         fullNameLabel.textColor = .black
         fullNameLabel.text = "Hipster Megacat"
-        addSubview(fullNameLabel)
+        
     }
     
     func setupStatusLabel(){
+        addSubview(statusLabel)
         statusLabel.frame = CGRect(x: safeAreaInsets.left + 16, y: safeAreaInsets.top + 34, width: 200, height: 100)
         statusLabel.font = .systemFont(ofSize: 14, weight: .regular)
         statusLabel.textColor = .gray
         statusLabel.text = "Waiting for waiting"
-        addSubview(statusLabel)
     }
     
     func setupSetStatusButton(){
+        addSubview(setStatusButton)
         setStatusButton.frame = CGRect(x: 16, y: 100, width: 400 - 32, height: 50)
         setStatusButton.titleLabel?.font = .systemFont(ofSize: statusUILabel.font.pointSize, weight: .regular)
         setStatusButton.setTitle("Show status", for: .normal)
@@ -87,36 +80,35 @@ class ProfileHeaderView: UIView {
         setStatusButton.layer.shadowColor = UIColor.black.cgColor
         setStatusButton.layer.shadowOpacity = 0.7
         setStatusButton.addTarget(self, action: #selector(buttonPressed), for: UIControl.Event.touchUpInside)
-        addSubview(setStatusButton)
+        
+    }
+    
+    func setupStatusTextField(){
+        statusTextField.backgroundColor = .white
+        statusTextField.layer.cornerRadius = 12
+        statusTextField.layer.borderWidth = 1
+        statusTextField.layer.borderColor = UIColor.black.cgColor
+        statusTextField.font = .systemFont(ofSize: 15, weight: .regular)
+        statusTextField.textColor = .black
     }
     
     func setupNewButton(){
         let newButton = UIButton()
         addSubview(newButton)
         newButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        newButton.frame.size = CGSize(width: 100, height: 50)
-        
+        newButton.contentMode = .center
         newButton.setTitle("New button title", for: .normal)
+        newButton.setTitleColor(.black, for: .normal)
         newButton.backgroundColor = .yellow
-        newButton.bottomAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
-        newButton.leftAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.leftAnchor).isActive = true
-        newButton.rightAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.rightAnchor).isActive = true
+        newButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        newButton.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor).isActive = true
+        newButton.leadingAnchor.constraint(lessThanOrEqualTo: self.leadingAnchor).isActive = true
+        newButton.trailingAnchor.constraint(lessThanOrEqualTo: self.trailingAnchor).isActive = true
         
     }
         
         @objc func buttonPressed(sender: UIButton!) {
             print("Status is: \(self.statusLabel.text)")
-            
-            
         }
-    
-    /*Программно добавить новую UIButton, изменить title и задать следующие правила отображения с помощью кода:
-    Слева и справа нулевые отступы;
-    Снизу привязать к Safe Area.*/
-    
-    
-    //setStatusButton.frame = CGRect(x: 16, y: 100, width: 400 - 32, height: 50)
-    
 
 }
