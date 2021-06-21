@@ -48,13 +48,30 @@ class ProfileHeaderView: UIView {
         }
         
     func setupImageView(){
+        addSubview(avatarImageView)
         let imageName = "cat.png"
         let image = UIImage(named: imageName)
         avatarImageView.image = image
         avatarImageView.layer.borderColor = UIColor.white.cgColor
         avatarImageView.layer.borderWidth = 3
         avatarImageView.layer.cornerRadius = 50
-        addSubview(avatarImageView)
+        avatarImageView.isUserInteractionEnabled = true
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        avatarImageView.addGestureRecognizer(tapRecognizer)
+        
+    }
+    
+    @objc func tapAction(){
+        imageAnimate()    }
+    
+    func imageAnimate(){
+        UIImageView.animate(withDuration: 1, animations: {
+            self.avatarImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+            self.avatarImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+            
+            
+            
+        }, completion: nil)
     }
     
     func setupFullNameLabel(){
