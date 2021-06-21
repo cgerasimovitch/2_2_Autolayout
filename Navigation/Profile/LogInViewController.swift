@@ -18,7 +18,7 @@ class LogInViewController: UIViewController {
     let loginButton = UIButton()
     let scrollView = UIScrollView()
     let containerView = UIView()
-   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -171,7 +171,14 @@ class LogInViewController: UIViewController {
         default:
             loginButton.alpha = 0.8
         }
+        loginButton.addTarget(self, action: #selector(buttonPressed), for: UIControl.Event.touchUpInside)
         
     }
 
+    @objc func buttonPressed(sender: UIButton!) {
+        
+        self.present(ProfileViewController(), animated: false, completion: nil)
+    }
+    
+   
 }
