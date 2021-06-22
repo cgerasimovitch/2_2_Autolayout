@@ -36,7 +36,7 @@ class ProfileHeaderView: UIView {
         
         required init?(coder: NSCoder) {
             super.init(coder: coder)
-            setupNewButton()
+            
         }
         
     func setupImageView(imageView: UIImageView){
@@ -92,20 +92,7 @@ class ProfileHeaderView: UIView {
         statusTextField.textColor = .black
     }
     
-    func setupNewButton(){
-        let newButton = UIButton()
-        addSubview(newButton)
-        newButton.translatesAutoresizingMaskIntoConstraints = false
-        newButton.contentMode = .center
-        newButton.setTitle("New button title", for: .normal)
-        newButton.setTitleColor(.black, for: .normal)
-        newButton.backgroundColor = .yellow
-        newButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        newButton.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        newButton.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        newButton.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        
-    }
+    
         
         @objc func buttonPressed(sender: UIButton!) {
             print("Status is: \(self.statusLabel.text)")
