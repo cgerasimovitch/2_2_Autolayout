@@ -58,7 +58,6 @@ class ProfileHeaderView: UIView {
     }
     
     func setupFullNameLabel(){
-        //Add headerUILabel
         
         fullNameLabel.font = .systemFont(ofSize: 18, weight: .bold)
         fullNameLabel.textColor = .black

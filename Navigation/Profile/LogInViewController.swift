@@ -34,7 +34,6 @@ class LogInViewController: UIViewController {
         
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -81,31 +80,26 @@ class LogInViewController: UIViewController {
         container.backgroundColor = .red
         container.addSubview(logoImageView)
         container.addSubview(fieldsView)
-        container.addSubview(loginTextField)
-        container.addSubview(border)
-        container.addSubview(passwordTextField)
         container.addSubview(loginButton)
         
     }
     
     func setupImageView(imageView: UIImageView){
-        view.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         let image = UIImage(named: "logo.png")
         imageView.image = image
         imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        imageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 120).isActive = true
+        imageView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
+        imageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 120).isActive = true
     }
     
     func setupFieldsView(uiview: UIView){
-        view.addSubview(uiview)
         uiview.translatesAutoresizingMaskIntoConstraints = false
         uiview.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        uiview.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
-        uiview.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
-        uiview.topAnchor.constraint(equalTo: self.logoImageView.bottomAnchor, constant: 120).isActive = true
+        uiview.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
+        uiview.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
+        uiview.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 120).isActive = true
         uiview.backgroundColor = .systemGray6
         uiview.layer.borderColor = UIColor.lightGray.cgColor
         uiview.layer.borderWidth = 0.5
@@ -127,7 +121,6 @@ class LogInViewController: UIViewController {
     }
     
     func setupInfieldBorder(uiview: UIView){
-        
         fieldsView.addSubview(border)
         border.backgroundColor = UIColor.lightGray
         border.translatesAutoresizingMaskIntoConstraints = false
@@ -151,20 +144,18 @@ class LogInViewController: UIViewController {
     }
     
     func setupLogInButton(button: UIButton){
-        
-        view.addSubview(loginButton)
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         let pixelImage = UIImage(named: "blue_pixel.png")
         loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         loginButton.leadingAnchor.constraint(equalTo: fieldsView.leadingAnchor).isActive = true
         loginButton.trailingAnchor.constraint(equalTo: fieldsView.trailingAnchor).isActive = true
         loginButton.topAnchor.constraint(equalTo: fieldsView.bottomAnchor, constant: 16).isActive = true
+        loginButton.clipsToBounds = true
         loginButton.layer.cornerRadius = 10
         loginButton.setTitle("Log In", for: .normal)
         loginButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         loginButton.titleLabel?.textColor = .white
         loginButton.setBackgroundImage(pixelImage, for: .normal)
-        loginButton.layer.cornerRadius = 10
         switch loginButton.state {
         case .normal:
             loginButton.alpha = 1
