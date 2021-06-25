@@ -39,8 +39,8 @@
 		846BF182267126BB00716517 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		846BF186267126EB00716517 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		846BF18A26713D6B00716517 /* cat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat.png; sourceTree = "<group>"; };
-		849A44B52673B66600913CA5 /* blue_pixel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blue_pixel.png; path = Navigation/blue_pixel.png; sourceTree = SOURCE_ROOT; };
-		849A44B62673B66600913CA5 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = Navigation/logo.png; sourceTree = SOURCE_ROOT; };
+		849A44B52673B66600913CA5 /* blue_pixel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blue_pixel.png; path = Navigation/Pictures/blue_pixel.png; sourceTree = SOURCE_ROOT; };
+		849A44B62673B66600913CA5 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = Navigation/Pictures/logo.png; sourceTree = SOURCE_ROOT; };
 		849A44BA2673B67B00913CA5 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,7 +80,7 @@
 				060782B5250CE27700A87020 /* FeedViewController.swift */,
 				060782B7250CE27700A87020 /* Main.storyboard */,
 				060782BA250CE27A00A87020 /* Assets.xcassets */,
-				846BF18A26713D6B00716517 /* cat.png */,
+				84036EE02685CEC800C8A3AC /* Pictures */,
 				060782BC250CE27A00A87020 /* LaunchScreen.storyboard */,
 				060782BF250CE27A00A87020 /* Info.plist */,
 				060782C5250CEB0A00A87020 /* InfoViewController.swift */,
@@ -90,13 +90,21 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		84036EE02685CEC800C8A3AC /* Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				849A44B52673B66600913CA5 /* blue_pixel.png */,
+				849A44B62673B66600913CA5 /* logo.png */,
+				846BF18A26713D6B00716517 /* cat.png */,
+			);
+			path = Pictures;
+			sourceTree = "<group>";
+		};
 		846BF181267126A400716517 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
 				846BF182267126BB00716517 /* ProfileViewController.swift */,
 				846BF186267126EB00716517 /* ProfileHeaderView.swift */,
-				849A44B52673B66600913CA5 /* blue_pixel.png */,
-				849A44B62673B66600913CA5 /* logo.png */,
 				849A44BA2673B67B00913CA5 /* LogInViewController.swift */,
 			);
 			path = Profile;

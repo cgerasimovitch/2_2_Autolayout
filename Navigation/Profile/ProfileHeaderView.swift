@@ -95,12 +95,12 @@ class ProfileHeaderView: UIView {
         newButton.translatesAutoresizingMaskIntoConstraints = false
         
         newButton.frame.size = CGSize(width: 100, height: 50)
-        
+        newButton.setTitleColor(.cyan, for: .normal)
         newButton.setTitle("New button title", for: .normal)
         newButton.backgroundColor = .yellow
-        newButton.bottomAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
-        newButton.leftAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.leftAnchor).isActive = true
-        newButton.rightAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.rightAnchor).isActive = true
+        newButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+        newButton.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor).isActive = true
+        newButton.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor).isActive = true
         
     }
         

@@ -87,18 +87,25 @@ class LogInViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         let image = UIImage(named: "logo.png")
         imageView.image = image
-        imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: self.containerView.centerXAnchor).isActive = true
-        imageView.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 120).isActive = true
+        NSLayoutConstraint.activate([
+            imageView.heightAnchor.constraint(equalToConstant: 100),
+            imageView.widthAnchor.constraint(equalToConstant: 100),
+            imageView.centerXAnchor.constraint(equalTo: self.containerView.centerXAnchor),
+            imageView.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 120)
+        ])
+        
     }
     
     func setupFieldsView(uiview: UIView){
         uiview.translatesAutoresizingMaskIntoConstraints = false
         uiview.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        uiview.leadingAnchor.constraint(equalTo: self.containerView.leadingAnchor, constant: 16).isActive = true
-        uiview.trailingAnchor.constraint(equalTo: self.containerView.trailingAnchor, constant: -16).isActive = true
-        uiview.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 120).isActive = true
+        NSLayoutConstraint.activate([
+            uiview.leadingAnchor.constraint(equalTo: self.containerView.leadingAnchor, constant: 16),
+            uiview.trailingAnchor.constraint(equalTo: self.containerView.trailingAnchor, constant: -16),
+            uiview.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 120)
+        ])
+                                        
+        
         uiview.backgroundColor = .systemGray6
         uiview.layer.borderColor = UIColor.lightGray.cgColor
         uiview.layer.borderWidth = 0.5
@@ -110,9 +117,12 @@ class LogInViewController: UIViewController {
         field.translatesAutoresizingMaskIntoConstraints = false
         fieldsView.addSubview(field)
         field.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        field.leadingAnchor.constraint(equalTo: fieldsView.safeAreaLayoutGuide.leadingAnchor, constant: 5).isActive = true
-        field.trailingAnchor.constraint(equalTo: fieldsView.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        field.topAnchor.constraint(equalTo: fieldsView.topAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            field.leadingAnchor.constraint(equalTo: fieldsView.safeAreaLayoutGuide.leadingAnchor, constant: 5),
+            field.trailingAnchor.constraint(equalTo: fieldsView.safeAreaLayoutGuide.trailingAnchor),
+            field.topAnchor.constraint(equalTo: fieldsView.topAnchor)
+        ])
+       
         field.placeholder = "Email or phone"
         field.textColor = .black
         field.font = UIFont.systemFont(ofSize: 16, weight: .medium)
@@ -123,19 +133,25 @@ class LogInViewController: UIViewController {
         fieldsView.addSubview(border)
         border.backgroundColor = UIColor.lightGray
         border.translatesAutoresizingMaskIntoConstraints = false
-        border.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        border.leadingAnchor.constraint(equalTo: fieldsView.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        border.centerYAnchor.constraint(equalTo: fieldsView.centerYAnchor).isActive = true
-        border.trailingAnchor.constraint(equalTo: fieldsView.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            border.heightAnchor.constraint(equalToConstant: 1),
+            border.leadingAnchor.constraint(equalTo: fieldsView.safeAreaLayoutGuide.leadingAnchor),
+            border.centerYAnchor.constraint(equalTo: fieldsView.centerYAnchor),
+            border.trailingAnchor.constraint(equalTo: fieldsView.safeAreaLayoutGuide.trailingAnchor)
+        ])
+        
     }
     
     func setupPasswordField(field: UITextField){
         field.translatesAutoresizingMaskIntoConstraints = false
         fieldsView.addSubview(field)
         field.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        field.leadingAnchor.constraint(equalTo: fieldsView.safeAreaLayoutGuide.leadingAnchor, constant: 5).isActive = true
-        field.trailingAnchor.constraint(equalTo: fieldsView.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        field.bottomAnchor.constraint(equalTo: fieldsView.bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            field.leadingAnchor.constraint(equalTo: fieldsView.safeAreaLayoutGuide.leadingAnchor, constant: 5),
+            field.trailingAnchor.constraint(equalTo: fieldsView.safeAreaLayoutGuide.trailingAnchor),
+            field.bottomAnchor.constraint(equalTo: fieldsView.bottomAnchor)
+        ])
+        
         field.placeholder = "Password"
         field.isSecureTextEntry = true
         field.textColor = .black
@@ -146,10 +162,13 @@ class LogInViewController: UIViewController {
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         let pixelImage = UIImage(named: "blue_pixel.png")
         loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        loginButton.leadingAnchor.constraint(equalTo: fieldsView.leadingAnchor).isActive = true
-        loginButton.trailingAnchor.constraint(equalTo: fieldsView.trailingAnchor).isActive = true
-        loginButton.topAnchor.constraint(equalTo: fieldsView.bottomAnchor, constant: 16).isActive = true
-        loginButton.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            loginButton.leadingAnchor.constraint(equalTo: fieldsView.leadingAnchor),
+            loginButton.trailingAnchor.constraint(equalTo: fieldsView.trailingAnchor),
+            loginButton.topAnchor.constraint(equalTo: fieldsView.bottomAnchor, constant: 16),
+            loginButton.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor)
+        ])
+      
         loginButton.clipsToBounds = true
         loginButton.layer.cornerRadius = 10
         loginButton.setTitle("Log In", for: .normal)
@@ -167,8 +186,9 @@ class LogInViewController: UIViewController {
     }
 
     @objc func buttonPressed(sender: UIButton!) {
-        
-        self.present(ProfileViewController(), animated: false, completion: nil)
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let profileViewController = storyBoard.instantiateViewController(withIdentifier: "ProfileViewController")
+        self.navigationController?.pushViewController(profileViewController, animated: true)
     }
     
    
