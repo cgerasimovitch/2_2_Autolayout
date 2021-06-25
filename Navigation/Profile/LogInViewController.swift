@@ -77,10 +77,9 @@ class LogInViewController: UIViewController {
         container.trailingAnchor.constraint(equalTo: scroll.trailingAnchor).isActive = true
         container.centerXAnchor.constraint(equalTo: scroll.centerXAnchor).isActive = true
         container.bottomAnchor.constraint(equalTo: scroll.bottomAnchor).isActive = true
-        container.backgroundColor = .red
-        container.addSubview(logoImageView)
-        container.addSubview(fieldsView)
-        container.addSubview(loginButton)
+        self.containerView.addSubview(logoImageView)
+        self.containerView.addSubview(fieldsView)
+        self.containerView.addSubview(loginButton)
         
     }
     
@@ -90,15 +89,15 @@ class LogInViewController: UIViewController {
         imageView.image = image
         imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
-        imageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 120).isActive = true
+        imageView.centerXAnchor.constraint(equalTo: self.containerView.centerXAnchor).isActive = true
+        imageView.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: 120).isActive = true
     }
     
     func setupFieldsView(uiview: UIView){
         uiview.translatesAutoresizingMaskIntoConstraints = false
         uiview.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        uiview.leadingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
-        uiview.trailingAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
+        uiview.leadingAnchor.constraint(equalTo: self.containerView.leadingAnchor, constant: 16).isActive = true
+        uiview.trailingAnchor.constraint(equalTo: self.containerView.trailingAnchor, constant: -16).isActive = true
         uiview.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 120).isActive = true
         uiview.backgroundColor = .systemGray6
         uiview.layer.borderColor = UIColor.lightGray.cgColor
@@ -150,6 +149,7 @@ class LogInViewController: UIViewController {
         loginButton.leadingAnchor.constraint(equalTo: fieldsView.leadingAnchor).isActive = true
         loginButton.trailingAnchor.constraint(equalTo: fieldsView.trailingAnchor).isActive = true
         loginButton.topAnchor.constraint(equalTo: fieldsView.bottomAnchor, constant: 16).isActive = true
+        loginButton.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor).isActive = true
         loginButton.clipsToBounds = true
         loginButton.layer.cornerRadius = 10
         loginButton.setTitle("Log In", for: .normal)
