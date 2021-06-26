@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "potatoImage.jpeg",
+      "filename" : "17_1873.jpeg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "potatoImage-1.jpeg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "potatoImage-2.jpeg",
       "idiom" : "universal",
       "scale" : "3x"
     }
