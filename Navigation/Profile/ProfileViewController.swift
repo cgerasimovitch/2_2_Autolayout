@@ -10,17 +10,19 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     let tableView = UITableView()
+    let cellReuseIdentifier = "cell"
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         setupTableView(table: tableView)
-
+        tableView.dataSource = self
     }
     override func viewWillLayoutSubviews() {
         
     }
 
     func setupTableView(table: UITableView){
-       // table.delegate = self
         self.view.addSubview(table)
         table.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -44,7 +46,14 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let feed = FeedArray()
         let cell = PostTableViewCell()
+        cell.authorLabel.text = feed.feedArray[indexPath.row].author
+        cell.imageView?.image = UIImage(named: feed.feedArray[indexPath.row].image)
+        cell.descriptionLabel.text = feed.feedArray[indexPath.row].description
+        cell.likesLabel.text = "Likes: \(feed.feedArray[indexPath.row].likes)"
+        cell.viewsLabel.text = "Views: \(feed.feedArray[indexPath.row].views) "
+        print(cell.authorLabel.text)
         return cell
     }
     
