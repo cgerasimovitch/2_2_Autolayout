@@ -15,18 +15,30 @@ class PostTableViewCell: UITableViewCell {
     let descriptionLabel = UILabel()
     let likesLabel = UILabel()
     let viewsLabel = UILabel()
+    static let cellId = "postCellId"
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.addSubview(authorLabel)
+        contentView.addSubview(postImageView)
+        contentView.addSubview(descriptionLabel)
+        contentView.addSubview(likesLabel)
+        contentView.addSubview(viewsLabel)
         setupAuthorLabel(label: authorLabel)
         setupPostImageView(imageView: postImageView)
         setupDescriptionLabel(label: descriptionLabel)
         setuplikesLabel(label: likesLabel)
         setupViewsLabel(label: viewsLabel)
+        let marginGuide = contentView.layoutMarginsGuide
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     func setupAuthorLabel(label: UILabel) {
-        self.addSubview(label)
+        
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
@@ -40,21 +52,21 @@ class PostTableViewCell: UITableViewCell {
     }
     
     func setupPostImageView(imageView: UIImageView) {
-        self.addSubview(imageView)
+        let window = UIWindow()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = .black
         NSLayoutConstraint.activate([
             
             imageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 12),
-            imageView.heightAnchor.constraint(equalToConstant: window!.frame.width),
-            imageView.widthAnchor.constraint(equalToConstant: window!.frame.width)
+            imageView.heightAnchor.constraint(equalToConstant: window.frame.width),
+            imageView.widthAnchor.constraint(equalToConstant: window.frame.width)
         ])
         
     }
     
     func setupDescriptionLabel(label: UILabel){
-        self.addSubview(label)
+        
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
@@ -68,7 +80,7 @@ class PostTableViewCell: UITableViewCell {
     }
     
     func setuplikesLabel(label: UILabel){
-        self.addSubview(likesLabel)
+        
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
@@ -85,7 +97,7 @@ class PostTableViewCell: UITableViewCell {
     }
     
     func setupViewsLabel(label: UILabel){
-        self.addSubview(viewsLabel)
+        
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             label.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
