@@ -16,6 +16,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.cellId)
+        tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileHeaderView().profileHeaderId)
         setupTableView(table: tableView)
         
     }
@@ -46,6 +47,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
         return numberOfRows
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        1
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let feed = FeedArray()
         let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.cellId, for: indexPath) as! PostTableViewCell
@@ -54,10 +59,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
         cell.descriptionLabel.text = feed.feedArray[indexPath.row].description
         cell.likesLabel.text = "Likes: \(feed.feedArray[indexPath.row].likes)"
         cell.viewsLabel.text = "Views: \(feed.feedArray[indexPath.row].views) "
-        print(cell.authorLabel.text)
         return cell
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileHeaderView().profileHeaderId) as! ProfileHeaderView
+        return headerView
+    }
     
 }
 
