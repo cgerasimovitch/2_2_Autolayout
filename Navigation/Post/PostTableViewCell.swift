@@ -62,6 +62,8 @@ class PostTableViewCell: UITableViewCell {
             imageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 12),
             imageView.heightAnchor.constraint(equalToConstant: window.frame.width),
             imageView.widthAnchor.constraint(equalToConstant: window.frame.width),
+            imageView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
             imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
         
@@ -102,10 +104,11 @@ class PostTableViewCell: UITableViewCell {
         
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            label.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor, constant: -16),
+            label.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
             label.widthAnchor.constraint(equalToConstant: 150),
             label.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
             label.bottomAnchor.constraint(lessThanOrEqualTo: contentView.layoutMarginsGuide.bottomAnchor, constant: -16)
+            
         ])
         
         label.font = .systemFont(ofSize: 16, weight: .medium)
