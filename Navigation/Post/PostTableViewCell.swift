@@ -17,6 +17,7 @@ class PostTableViewCell: UITableViewCell {
     let viewsLabel = UILabel()
     static let cellId = "postCellId"
     
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(authorLabel)
@@ -29,7 +30,7 @@ class PostTableViewCell: UITableViewCell {
         setupDescriptionLabel(label: descriptionLabel)
         setuplikesLabel(label: likesLabel)
         setupViewsLabel(label: viewsLabel)
-        let marginGuide = contentView.layoutMarginsGuide
+        
     }
     
     required init?(coder: NSCoder) {
@@ -41,9 +42,9 @@ class PostTableViewCell: UITableViewCell {
         
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            label.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            label.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
+            label.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor, constant: 16),
+            label.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor, constant: -16),
+            label.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor, constant: 16),
             label.heightAnchor.constraint(equalToConstant: 16)
         ])
         label.font = .systemFont(ofSize: 20, weight: .bold)
@@ -60,7 +61,8 @@ class PostTableViewCell: UITableViewCell {
             
             imageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 12),
             imageView.heightAnchor.constraint(equalToConstant: window.frame.width),
-            imageView.widthAnchor.constraint(equalToConstant: window.frame.width)
+            imageView.widthAnchor.constraint(equalToConstant: window.frame.width),
+            imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
         
     }
@@ -69,8 +71,8 @@ class PostTableViewCell: UITableViewCell {
         
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            label.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            label.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor, constant: 16),
+            label.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor, constant: -16),
             label.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 16),
         ])
         label.font = .systemFont(ofSize: 14, weight: .medium)
@@ -83,10 +85,10 @@ class PostTableViewCell: UITableViewCell {
         
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            label.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor, constant: 16),
             label.widthAnchor.constraint(equalToConstant: 150),
             label.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
-            label.bottomAnchor.constraint(lessThanOrEqualTo: self.safeAreaLayoutGuide.bottomAnchor, constant: 16)
+            label.bottomAnchor.constraint(lessThanOrEqualTo: contentView.layoutMarginsGuide.bottomAnchor, constant: -16)
             
         ])
         
@@ -100,10 +102,10 @@ class PostTableViewCell: UITableViewCell {
         
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            label.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            label.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor, constant: -16),
             label.widthAnchor.constraint(equalToConstant: 150),
             label.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
-            label.bottomAnchor.constraint(lessThanOrEqualTo: self.safeAreaLayoutGuide.bottomAnchor, constant: 16)
+            label.bottomAnchor.constraint(lessThanOrEqualTo: contentView.layoutMarginsGuide.bottomAnchor, constant: -16)
         ])
         
         label.font = .systemFont(ofSize: 16, weight: .medium)

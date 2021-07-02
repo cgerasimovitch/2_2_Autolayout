@@ -14,9 +14,10 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.cellId)
-        setupTableView(table: tableView)
         tableView.dataSource = self
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.cellId)
+        setupTableView(table: tableView)
+        
     }
     override func viewWillLayoutSubviews() {
         
@@ -47,7 +48,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let feed = FeedArray()
-        let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.cellId, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.cellId, for: indexPath) as! PostTableViewCell
         cell.authorLabel.text = feed.feedArray[indexPath.row].author
         cell.imageView?.image = UIImage(named: feed.feedArray[indexPath.row].image)
         cell.descriptionLabel.text = feed.feedArray[indexPath.row].description
