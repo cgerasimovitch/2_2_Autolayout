@@ -26,7 +26,7 @@ class PostTableViewCell: UITableViewCell {
         contentView.addSubview(likesLabel)
         contentView.addSubview(viewsLabel)
         setupAuthorLabel(label: authorLabel)
-        setupPostImageView(imageView: postImageView)
+        setupPostImageView(postImageView: postImageView)
         setupDescriptionLabel(label: descriptionLabel)
         setuplikesLabel(label: likesLabel)
         setupViewsLabel(label: viewsLabel)
@@ -52,19 +52,19 @@ class PostTableViewCell: UITableViewCell {
         label.numberOfLines = 2
     }
     
-    func setupPostImageView(imageView: UIImageView) {
+    func setupPostImageView(postImageView: UIImageView) {
         let window = UIWindow()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .black
+        postImageView.translatesAutoresizingMaskIntoConstraints = false
+        postImageView.contentMode = .scaleAspectFit
+        postImageView.backgroundColor = .black
         NSLayoutConstraint.activate([
             
-            imageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 12),
-            imageView.heightAnchor.constraint(equalToConstant: window.frame.width),
-            imageView.widthAnchor.constraint(equalToConstant: window.frame.width),
-            imageView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
-            imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
+            postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 12),
+            postImageView.heightAnchor.constraint(equalToConstant: window.frame.width),
+            postImageView.widthAnchor.constraint(equalToConstant: window.frame.width),
+            postImageView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+            postImageView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
+            postImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
         
     }
