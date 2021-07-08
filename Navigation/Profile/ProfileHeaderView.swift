@@ -61,18 +61,7 @@ class ProfileHeaderView: UIView {
         
     }
     
-    @objc func tapAction(){
-        imageAnimate()    }
-    
-    func imageAnimate(){
-        UIImageView.animate(withDuration: 1, animations: {
-            self.avatarImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-            self.avatarImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-            
-            
-            
-        }, completion: nil)
-    }
+
     
     func setupFullNameLabel(){
         //Add headerUILabel
@@ -128,12 +117,4 @@ class ProfileHeaderView: UIView {
             
         }
     
-    /*Программно добавить новую UIButton, изменить title и задать следующие правила отображения с помощью кода:
-    Слева и справа нулевые отступы;
-    Снизу привязать к Safe Area.*/
-    
-    
-    //setStatusButton.frame = CGRect(x: 16, y: 100, width: 400 - 32, height: 50)
-    
-
 }
