@@ -17,7 +17,7 @@ class ProfileViewController: UIViewController, ImagePresenter {
     }
     
     func present(imageView: UIImageView){
-       
+        print("Present started")
         imageView.frame = UIScreen.main.bounds
         imageView.backgroundColor = .black
         imageView.contentMode = .scaleAspectFit

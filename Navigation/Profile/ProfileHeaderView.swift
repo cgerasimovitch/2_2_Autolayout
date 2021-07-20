@@ -11,7 +11,7 @@ import UIKit
 class ProfileHeaderView: UIView {
 
     let statusUILabel = UILabel()
-    public weak var presenter: ImagePresenter?
+    public var presenter: ImagePresenter?
     @IBOutlet weak var avatarImageView: UIImageView!{
         didSet{
             setupImageView()
@@ -41,11 +41,14 @@ class ProfileHeaderView: UIView {
     
         override init(frame: CGRect) {
             super.init(frame: frame)
+            
         }
         
         required init?(coder: NSCoder) {
             super.init(coder: coder)
             setupNewButton()
+            presenter = ProfileViewController().self
+            
         }
         
     func setupImageView(){
