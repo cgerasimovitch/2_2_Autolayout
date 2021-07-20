@@ -11,6 +11,7 @@ import UIKit
 class ProfileHeaderView: UIView {
 
     let statusUILabel = UILabel()
+    public weak var presenter: ImagePresenter?
     @IBOutlet weak var avatarImageView: UIImageView!{
         didSet{
             setupImageView()
@@ -116,5 +117,16 @@ class ProfileHeaderView: UIView {
             
             
         }
-    
+    @objc func tapAction(_ sender: UITapGestureRecognizer){
+        
+     
+       guard let imageToPresent = avatarImageView else {
+                print("theirs some thing wrong, image should exist")
+                return
+            }
+        
+        self.presenter?.present(imageView: imageToPresent) ?? print("Can't present")
+            
+    }
+        
 }
