@@ -9,12 +9,13 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    let tableView = UITableView()
+    @IBOutlet weak var tableView: UITableView!
     let cellReuseIdentifier = "cell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.cellId)
         tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileHeaderView().profileHeaderId)
         setupTableView(table: tableView)
@@ -55,7 +56,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
         let feed = FeedArray()
         let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.cellId, for: indexPath) as! PostTableViewCell
         cell.authorLabel.text = feed.feedArray[indexPath.row].author
-        //cell.imageView?.image = UIImage(named: feed.feedArray[indexPath.row].image)
         cell.postImageView.image = UIImage(named: feed.feedArray[indexPath.row].image)
         cell.descriptionLabel.text = feed.feedArray[indexPath.row].description
         cell.likesLabel.text = "Likes: \(feed.feedArray[indexPath.row].likes)"
@@ -68,5 +68,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
         return headerView
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        250
+    }
 }
 
