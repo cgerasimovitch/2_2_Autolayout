@@ -29,6 +29,7 @@
 		849A44B72673B66600913CA5 /* blue_pixel.png in Resources */ = {isa = PBXBuildFile; fileRef = 849A44B52673B66600913CA5 /* blue_pixel.png */; };
 		849A44B82673B66700913CA5 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 849A44B62673B66600913CA5 /* logo.png */; };
 		849A44BB2673B67B00913CA5 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849A44BA2673B67B00913CA5 /* LogInViewController.swift */; };
+		84B50F8926AB5B4800BDC3AF /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B50F8826AB5B4800BDC3AF /* arrow.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		849A44B52673B66600913CA5 /* blue_pixel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blue_pixel.png; path = Navigation/Images/blue_pixel.png; sourceTree = SOURCE_ROOT; };
 		849A44B62673B66600913CA5 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = Navigation/Images/logo.png; sourceTree = SOURCE_ROOT; };
 		849A44BA2673B67B00913CA5 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		84B50F8826AB5B4800BDC3AF /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				842B95AD267BD88C00DF7C72 /* mouseImage.jpeg */,
+				84B50F8826AB5B4800BDC3AF /* arrow.png */,
 				842B95AF267BD88C00DF7C72 /* potatoImage.jpeg */,
 				842B95AE267BD88C00DF7C72 /* racoonImage.jpeg */,
 				842B95AC267BD88C00DF7C72 /* catImage.jpeg */,
@@ -199,6 +202,7 @@
 			files = (
 				849A44B72673B66600913CA5 /* blue_pixel.png in Resources */,
 				060782BE250CE27A00A87020 /* LaunchScreen.storyboard in Resources */,
+				84B50F8926AB5B4800BDC3AF /* arrow.png in Resources */,
 				849A44B82673B66700913CA5 /* logo.png in Resources */,
 				842B95B0267BD88C00DF7C72 /* catImage.jpeg in Resources */,
 				060782BB250CE27A00A87020 /* Assets.xcassets in Resources */,

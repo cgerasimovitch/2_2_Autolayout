@@ -9,18 +9,23 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    let tableView = UITableView()
+    @IBOutlet weak var tableView: UITableView!
+    let cellReuseIdentifier = "cell"
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.cellId)
+        tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileHeaderView().profileHeaderId)
         setupTableView(table: tableView)
-
+        
     }
     override func viewWillLayoutSubviews() {
         
     }
 
     func setupTableView(table: UITableView){
-       // table.delegate = self
         self.view.addSubview(table)
         table.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -43,11 +48,27 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
         return numberOfRows
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        1
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = PostTableViewCell()
+        let feed = FeedArray()
+        let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.cellId, for: indexPath) as! PostTableViewCell
+        cell.authorLabel.text = feed.feedArray[indexPath.row].author
+        cell.postImageView.image = UIImage(named: feed.feedArray[indexPath.row].image)
+        cell.descriptionLabel.text = feed.feedArray[indexPath.row].description
+        cell.likesLabel.text = "Likes: \(feed.feedArray[indexPath.row].likes)"
+        cell.viewsLabel.text = "Views: \(feed.feedArray[indexPath.row].views) "
         return cell
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileHeaderView().profileHeaderId) as! ProfileHeaderView
+        return headerView
+    }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        400
+    }
 }
-
