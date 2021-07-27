@@ -20,6 +20,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     let userPhotosContainerView = UIView()
     let photosHeader = UILabel()
     let navigationImageView = UIImageView()
+    let photosStackView = UIStackView()
     
     
     override init(reuseIdentifier: String?) {
@@ -33,6 +34,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         self.contentView.addSubview(userPhotosContainerView)
         userPhotosContainerView.addSubview(photosHeader)
         userPhotosContainerView.addSubview(navigationImageView)
+        userPhotosContainerView.addSubview(photosStackView)
         
         setupImageView()
         setupImageViewLayout()
@@ -46,6 +48,10 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         setupUserPhotosContainerLayout()
         setupUserPhotosHeader()
         setupUserPhotosHeaderLayout()
+        setupUserPhotosNavigation()
+        setupUserPhotosNavigationLayout()
+        setupUserPhotosPreview()
+        setupUserPhotosPreviewLayout()
         
     }
         required init?(coder: NSCoder) {
@@ -170,28 +176,58 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     func setupUserPhotosNavigation(){
         let imageName = "arrow.png"
-        let navImage = UIImage(named: imageName)
-        navigationImageView.image = navImage
-        navigationImageView.backgroundColor = .black
-        
+        let image = UIImage(named: imageName)
+        navigationImageView.image = image
+        navigationImageView.contentMode = .scaleAspectFit
     }
     
     func setupUserPhotosNavigationLayout(){
-        photosHeader.translatesAutoresizingMaskIntoConstraints = false
+        navigationImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             navigationImageView.heightAnchor.constraint(equalToConstant: 30),
             navigationImageView.widthAnchor.constraint(equalToConstant: 30),
-            navigationImageView.topAnchor.constraint(equalTo: userPhotosContainerView.topAnchor, constant: 12),
+            navigationImageView.centerYAnchor.constraint(equalTo: photosHeader.centerYAnchor),
             navigationImageView.trailingAnchor.constraint(equalTo: userPhotosContainerView.trailingAnchor, constant: -12)
         ])
     }
     
     func setupUserPhotosPreview(){
         
+        let photo01 = UIImageView(image: UIImage(named: "01_1890"))
+        let photo02 = UIImageView(image: UIImage(named: "02_1844"))
+        let photo03 = UIImageView(image: UIImage(named: "03_1876"))
+        let photo04 = UIImageView(image: UIImage(named: "05_1870"))
+        let photosArray = [photo01, photo02, photo03, photo04]
+        let window = UIWindow()
+        let spaceCalculations = (window.frame.width - 12 * 2 - 8 * 3)/4
+        for photo in photosArray{
+            photo.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                photo.heightAnchor.constraint(equalToConstant: spaceCalculations),
+                photo.widthAnchor.constraint(equalToConstant: spaceCalculations)
+            ])
+            photo.layer.cornerRadius = 6
+            photo.clipsToBounds = true
+            photosStackView.addArrangedSubview(photo)
+            print("Image Added")
+            print("Width is: \(spaceCalculations)")
+            
+        }
+        
     }
     
     func setupUserPhotosPreviewLayout(){
-        
+        photosStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            photosStackView.heightAnchor.constraint(equalToConstant: 100),
+            photosStackView.topAnchor.constraint(equalTo: photosHeader.bottomAnchor, constant: 12),
+            photosStackView.leadingAnchor.constraint(equalTo:userPhotosContainerView.leadingAnchor, constant: 12),
+            photosStackView.trailingAnchor.constraint(equalTo:userPhotosContainerView.trailingAnchor, constant: -12)
+            ])
+        photosStackView.axis = NSLayoutConstraint.Axis.horizontal
+        photosStackView.distribution = .fillEqually
+        photosStackView.alignment = .center
+        photosStackView.spacing = 8.0
     }
         
        
