@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.cellId)
+        tableView.register(PreviewPhotosCell.self, forCellReuseIdentifier: PreviewPhotosCell.cellId)
         tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileHeaderView().profileHeaderId)
         setupTableView(table: tableView)
         
@@ -49,18 +50,27 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        1
+        3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let feed = FeedArray()
-        let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.cellId, for: indexPath) as! PostTableViewCell
-        cell.authorLabel.text = feed.feedArray[indexPath.row].author
-        cell.postImageView.image = UIImage(named: feed.feedArray[indexPath.row].image)
-        cell.descriptionLabel.text = feed.feedArray[indexPath.row].description
-        cell.likesLabel.text = "Likes: \(feed.feedArray[indexPath.row].likes)"
-        cell.viewsLabel.text = "Views: \(feed.feedArray[indexPath.row].views) "
-        return cell
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: PreviewPhotosCell.cellId, for: indexPath) as! PreviewPhotosCell
+            return cell
+        case 1:
+            let feed = FeedArray()
+            let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.cellId, for: indexPath) as! PostTableViewCell
+            cell.authorLabel.text = feed.feedArray[indexPath.row].author
+            cell.postImageView.image = UIImage(named: feed.feedArray[indexPath.row].image)
+            cell.descriptionLabel.text = feed.feedArray[indexPath.row].description
+            cell.likesLabel.text = "Likes: \(feed.feedArray[indexPath.row].likes)"
+            cell.viewsLabel.text = "Views: \(feed.feedArray[indexPath.row].views) "
+                return cell
+        default:
+            return UITableViewCell()
+        }
+            
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
