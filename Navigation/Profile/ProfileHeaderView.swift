@@ -17,7 +17,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     let statusLabel = UILabel()
     let setStatusButton = UIButton()
     let newButton = UIButton()
-    
+    let textField = UITextField()
     
     
     override init(reuseIdentifier: String?) {
@@ -27,7 +27,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         self.contentView.addSubview(fullNameLabel)
         self.contentView.addSubview(statusLabel)
         self.contentView.addSubview(setStatusButton)
-        self.contentView.addSubview(newButton)
+        self.contentView.addSubview(textField)
        
         
         setupImageView()
@@ -38,6 +38,8 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         setupStatusLabelLayout()
         setupSetStatusButton()
         setupSetStatusButtonLayout()
+        setupTextField(field: textField)
+        setupTextFieldLayout(field: textField)
         
     }
         required init?(coder: NSCoder) {
@@ -95,6 +97,27 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             statusLabel.trailingAnchor.constraint(equalTo:  self.contentView.trailingAnchor, constant: 10)
         ])
     }
+    
+    
+    func setupTextField(field: UITextField){
+            field.backgroundColor = .white
+            field.layer.cornerRadius = 12
+            field.layer.borderWidth = 1
+            field.layer.borderColor = UIColor.black.cgColor
+            field.font = .systemFont(ofSize: 15, weight: .regular)
+            field.textColor = .black
+    }
+    func setupTextFieldLayout(field: UITextField){
+        field.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            field.heightAnchor.constraint(equalToConstant: 40),
+            field.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 17),
+            field.leadingAnchor.constraint(equalTo: statusLabel.leadingAnchor),
+            field.trailingAnchor.constraint(equalTo:  self.contentView.trailingAnchor, constant: -10)
+            
+        ])
+    }
+    
     func setupSetStatusButton(){
         setStatusButton.titleLabel?.font = .systemFont(ofSize: statusUILabel.font.pointSize, weight: .regular)
         setStatusButton.setTitle("Show status", for: .normal)
@@ -120,14 +143,11 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         setStatusButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             setStatusButton.heightAnchor.constraint(equalToConstant: 50),
-            setStatusButton.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 30),
+            setStatusButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 10),
             setStatusButton.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10),
             setStatusButton.trailingAnchor.constraint(equalTo:  self.contentView.trailingAnchor, constant: -10)
         ])
     }
-    
-    
-    
     
     
     
