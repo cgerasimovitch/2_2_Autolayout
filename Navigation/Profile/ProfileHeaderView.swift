@@ -123,12 +123,12 @@ class ProfileHeaderView: UIView {
     @objc func tapAction(_ sender: UITapGestureRecognizer){
         
      
-       guard let imageToPresent = avatarImageView else {
+        guard let imageToPresent = avatarImageView.image else {
                 print("theirs some thing wrong, image should exist")
                 return
             }
         
-        self.presenter?.present(imageView: imageToPresent) ?? print("Can't present")
+        self.presenter?.present(image: imageToPresent) ?? print("Can't present")
             
     }
         

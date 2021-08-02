@@ -67,6 +67,10 @@
                                     <outlet property="statusLabel" destination="MoU-uc-TLn" id="JqF-RX-h2e"/>
                                 </connections>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HlN-Xn-sUl">
+                                <rect key="frame" x="87" y="327" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FCL-IZ-fe8"/>
                         <color key="backgroundColor" systemColor="systemTealColor"/>
@@ -77,6 +81,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="TPi-FS-zh0"/>
+                    <connections>
+                        <outlet property="myImageView" destination="HlN-Xn-sUl" id="DCu-iB-ebe"/>
+                        <outlet property="profileHeaderView" destination="eFo-Yp-VVB" id="HNf-w4-4HV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZwS-K6-ZGq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

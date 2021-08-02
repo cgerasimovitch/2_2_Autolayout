@@ -10,5 +10,5 @@ import Foundation
 import UIKit
 
 protocol ImagePresenter: AnyObject {
-    func present(imageView: UIImageView)
+    func present(image: UIImage)
 }
