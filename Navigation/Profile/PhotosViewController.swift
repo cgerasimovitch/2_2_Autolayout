@@ -11,6 +11,13 @@ import UIKit
 class PhotosViewController: UIViewController {
     var photosCollection:UICollectionView?
     let photosList = PhotosList().listofItems
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +39,14 @@ class PhotosViewController: UIViewController {
         photosCollection?.delegate = self
  
         self.view.addSubview(photosCollection!)
+    }
+    
+    
+
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
 }
 extension PhotosViewController: UICollectionViewDataSource {
