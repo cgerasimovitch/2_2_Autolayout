@@ -61,13 +61,24 @@ class PreviewPhotosCell: UITableViewCell {
             ])
             photo.layer.cornerRadius = 6
             photo.clipsToBounds = true
+            photo.isUserInteractionEnabled = true
             photosStackView.addArrangedSubview(photo)
             print("Image Added")
             print("Width is: \(spaceCalculations)")
+            //let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(photoTapAction))
+            //photo.addGestureRecognizer(tapRecognizer)
             
         }
         
     }
+    
+    @objc func photoTapAction(_ sender: UITapGestureRecognizer){
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let profileViewController = storyBoard.instantiateViewController(withIdentifier: "ProfileViewController")
+        let photosViewController = PhotosViewController()
+        profileViewController.navigationController?.pushViewController(photosViewController, animated: true)
+         
+     }
     
     func setupUserPhotosPreviewLayout(){
         photosStackView.translatesAutoresizingMaskIntoConstraints = false

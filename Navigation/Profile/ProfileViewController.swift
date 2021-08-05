@@ -106,4 +106,17 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
             return 0
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section{
+        case 0:
+            return
+        case 1:
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let photosViewController = storyBoard.instantiateViewController(withIdentifier: "PhotosViewController")
+            self.navigationController!.pushViewController(photosViewController, animated: true)
+        default:
+            return
+        }
+    }
 }

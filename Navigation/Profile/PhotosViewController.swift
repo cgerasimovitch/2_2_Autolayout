@@ -9,44 +9,52 @@
 import UIKit
 
 class PhotosViewController: UIViewController {
-    var photosCollection = UICollectionView()
-    
-    
+    var photosCollection:UICollectionView?
+    let photosList = PhotosList().listofItems
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(photosCollection)
-        photosCollection.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: PhotosCollectionViewCell.cellId)
-        // Do any additional setup after loading the view.
-    }
-    
-    func setupCollection(){
         
-    }
-    
-    func setupCollectionLayout(){
-        photosCollection.translatesAutoresizingMaskIntoConstraints = false
+        let view = UIView()
+        view.backgroundColor = .white
         
-        NSLayoutConstraint.activate([
-            photosCollection.topAnchor.constraint(equalTo: self.view.topAnchor),
-            photosCollection.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            photosCollection.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            photosCollection.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        ])
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        let itemOffset: CGFloat = 8
+        layout.sectionInset = UIEdgeInsets(top: itemOffset, left: itemOffset, bottom: itemOffset, right: itemOffset)
+        let window = UIWindow()
+        let squareSize = (window.frame.width - itemOffset*4 - 5)/3
+        layout.itemSize = CGSize(width: squareSize, height: squareSize)
+        
+        photosCollection = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        photosCollection!.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: PhotosCollectionViewCell.cellId)
+        photosCollection!.backgroundColor = UIColor.white
+        
+        photosCollection?.dataSource = self
+        photosCollection?.delegate = self
+ 
+        self.view.addSubview(photosCollection!)
     }
-
-    
 }
-
-extension PhotosViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+extension PhotosViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
+        return photosList.count
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        
+        let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell.cellId, for: indexPath) as! PhotosCollectionViewCell
+        myCell.backgroundColor = UIColor.gray
+        myCell.photoImageView.image = UIImage(named: photosList[indexPath.row])
+        myCell.photoImageView.contentMode = .scaleAspectFit
+        return myCell
     }
-    
-    
-    
-    
 }
+extension PhotosViewController: UICollectionViewDelegate {
+ 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+       print("User tapped on item \(indexPath.row)")
+    }
+}
+    
+    
+    
