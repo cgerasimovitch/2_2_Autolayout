@@ -11,32 +11,45 @@ import UIKit
 class ProfileViewController: UIViewController, ImagePresenter {
     @IBOutlet weak var profileHeaderView: ProfileHeaderView!
     
-    @IBOutlet weak var myImageView: UIImageView!
+    var myImageView = UIImageView()
+    var popUpView = UIView()
     let window = UIWindow()
+    let closeButton = UIButton()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
+        
         profileHeaderView.presenter = self
     }
     
+    
+    
     func present(image: UIImage){
         print("Present started")
-        
-        myImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-        myImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-        myImageView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
-        myImageView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
-        myImageView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
-        ])
+        self.view.addSubview(popUpView)
+        popUpView.frame.size = super.view.frame.size
+        popUpView.addSubview(myImageView)
+        myImageView.frame.size = super.view.frame.size
         myImageView.backgroundColor = .black
         myImageView.contentMode = .scaleAspectFit
         myImageView.image = image
+        addCloseButton()
     }
     
-    override func viewWillLayoutSubviews() {
+    func addCloseButton(){
+        
+        popUpView.addSubview(closeButton)
+        closeButton.frame = CGRect(x: popUpView.frame.maxX - 70, y: 110, width: 50, height: 50)
+        closeButton.backgroundColor = .gray
+        closeButton.setTitle("X", for: .normal)
+        closeButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+        closeButton.addTarget(self, action: #selector(removethisBeauty), for: UIControl.Event.touchUpInside)
+    }
+    
+    @objc func removethisBeauty(){
+        myImageView.removeFromSuperview()
+        closeButton.removeFromSuperview()
+        popUpView.removeFromSuperview()
         
     }
-
-    
 }
