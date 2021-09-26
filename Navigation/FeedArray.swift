@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import StorageService
 
 class FeedArray{
     var feedArray = [Post(author: "Cat", description: "Mi-mi-miska moloka-a-a-a-a", image: "catPost", likes: 14, views: 19), Post(author: "Racoon", description: "Good racoon —— dead racoon", image: "racoonPost", likes: 22, views: 109), Post(author: "Mouse", description: "Chee-e-e-e-e-s-e", image: "mousePost", likes: 23, views: 43), Post(author: "Mister Potato", description: "Peppa, Peppa, where are you?", image: "potatoPost", likes: 12, views: 49)]
