@@ -19,6 +19,12 @@ class ProfileViewController: UIViewController, ImagePresenter {
     let tableView = UITableView()
     override func viewDidLoad() {
         super.viewDidLoad()
+        #if DEBUG
+        self.view.backgroundColor = UIColor.systemGray2
+        #endif
+        #if RELEASE
+        self.view.backgroundColor = UIColor.systemYellow
+        #endif
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.cellId)
@@ -103,10 +109,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
             let feed = FeedArray()
             let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.cellId, for: indexPath) as! PostTableViewCell
             cell.authorLabel.text = feed.feedArray[indexPath.row].author
-            cell.postImageView.image = UIImage(named: feed.feedArray[indexPath.row].image)
+            cell.postImageView.image = UIImage(named: feed.feedArray[indexPath.row].image ?? "cat.png")
             cell.descriptionLabel.text = feed.feedArray[indexPath.row].description
-            cell.likesLabel.text = "Likes: \(feed.feedArray[indexPath.row].likes)"
-            cell.viewsLabel.text = "Views: \(feed.feedArray[indexPath.row].views) "
+            cell.likesLabel.text = "Likes: \(feed.feedArray[indexPath.row].likes!)"
+            cell.viewsLabel.text = "Views: \(feed.feedArray[indexPath.row].views!) "
                 return cell
         default:
             return UITableViewCell()
