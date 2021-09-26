@@ -143,6 +143,10 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         
     }
     
+    func setupNewButton(){
+        
+    }
+    
     func setupSetStatusButtonLayout(){
         setStatusButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

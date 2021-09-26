@@ -10,12 +10,14 @@ import UIKit
 
 
 class ProfileViewController: UIViewController, ImagePresenter {
-    @IBOutlet weak var profileHeaderView: ProfileHeaderView!
+    ///@IBOutlet weak var profileHeaderView: ProfileHeaderView!
     
     var myImageView = UIImageView()
     var popUpView = UIView()
     let window = UIWindow()
     let closeButton = UIButton()
+    let tableView = UITableView()
+    let profileHeaderView = ProfileHeaderView()
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
