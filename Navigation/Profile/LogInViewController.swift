@@ -2,7 +2,7 @@
 //
 //  LogInViewController.swift
 //  Navigation
-//
+//  HomeWork 2_5
 //  Created by Admin on 6/11/21.
 //  Copyright © 2021 Artem Novichkov. All rights reserved.
 //
@@ -24,7 +24,7 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        navigationController?.navigationBar.isHidden = true
+        navigationController!.setNavigationBarHidden(true, animated: false)
         setupScrollandContainer(scroll: scrollView, container: containerView)
         setupImageView(imageView: logoImageView)
         setupFieldsView(uiview: fieldsView)
