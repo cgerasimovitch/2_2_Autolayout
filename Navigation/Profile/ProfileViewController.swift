@@ -19,6 +19,12 @@ class ProfileViewController: UIViewController, ImagePresenter {
     let tableView = UITableView()
     override func viewDidLoad() {
         super.viewDidLoad()
+        #if DEBUG
+        self.view.backgroundColor = UIColor.systemGray2
+        #endif
+        #if RELEASE
+        self.view.backgroundColor = UIColor.systemYellow
+        #endif
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.cellId)
