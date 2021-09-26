@@ -8,10 +8,14 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
-    @IBOutlet weak var tableView: UITableView!
-    let cellReuseIdentifier = "cell"
 
+class ProfileViewController: UIViewController, ImagePresenter {
+    @IBOutlet weak var profileHeaderView: ProfileHeaderView!
+    
+    var myImageView = UIImageView()
+    var popUpView = UIView()
+    let window = UIWindow()
+    let closeButton = UIButton()
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -21,13 +25,40 @@ class ProfileViewController: UIViewController {
         tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileHeaderView().profileHeaderId)
         tableView.register(PreviewPhotosHeader.self, forHeaderFooterViewReuseIdentifier: PreviewPhotosHeader().previewHeaderId)
         setupTableView(table: tableView)
+        profileHeaderView.presenter = self
+    }
+    
+    
+    
+    func present(image: UIImage){
+        print("Present started")
+        self.view.addSubview(popUpView)
+        popUpView.frame.size = super.view.frame.size
+        popUpView.addSubview(myImageView)
+        myImageView.frame.size = super.view.frame.size
+        myImageView.backgroundColor = .black
+        myImageView.contentMode = .scaleAspectFit
+        myImageView.image = image
+        addCloseButton()
+    }
+    
+    func addCloseButton(){
+        
+        popUpView.addSubview(closeButton)
+        closeButton.frame = CGRect(x: popUpView.frame.maxX - 70, y: 110, width: 50, height: 50)
+        closeButton.backgroundColor = .gray
+        closeButton.setTitle("X", for: .normal)
+        closeButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+        closeButton.addTarget(self, action: #selector(removethisBeauty), for: UIControl.Event.touchUpInside)
+    }
+    
+    @objc func removethisBeauty(){
+        myImageView.removeFromSuperview()
+        closeButton.removeFromSuperview()
+        popUpView.removeFromSuperview()
         
     }
-    override func viewWillLayoutSubviews() {
-        
-    }
-
-    func setupTableView(table: UITableView){
+  func setupTableView(table: UITableView){
         self.view.addSubview(table)
         table.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

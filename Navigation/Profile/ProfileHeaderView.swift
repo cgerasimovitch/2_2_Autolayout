@@ -18,8 +18,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     let setStatusButton = UIButton()
     let newButton = UIButton()
     let textField = UITextField()
-    
-    
+    public var presenter: ImagePresenter?
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         self.contentView.backgroundColor = .lightGray
@@ -40,21 +39,25 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         setupSetStatusButtonLayout()
         setupTextField(field: textField)
         setupTextFieldLayout(field: textField)
-        
     }
         required init?(coder: NSCoder) {
             super.init(coder: coder)
-            
+            setupNewButton()
+            presenter = ProfileViewController().self
         }
     
         
     func setupImageView(){
+        addSubview(avatarImageView)
         let imageName = "cat.png"
         let image = UIImage(named: imageName)
         avatarImageView.image = image
         avatarImageView.layer.borderColor = UIColor.white.cgColor
         avatarImageView.layer.borderWidth = 3
         avatarImageView.layer.cornerRadius = 50
+        avatarImageView.isUserInteractionEnabled = true
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        avatarImageView.addGestureRecognizer(tapRecognizer)
     }
     func setupImageViewLayout(){
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -65,6 +68,8 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             avatarImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 16),
             avatarImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16)
         ])}
+    
+
     
     func setupFullNameLabel(){
         
@@ -139,7 +144,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     }
     
     func setupSetStatusButtonLayout(){
-        
         setStatusButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             setStatusButton.heightAnchor.constraint(equalToConstant: 50),
@@ -148,12 +152,15 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             setStatusButton.trailingAnchor.constraint(equalTo:  self.contentView.trailingAnchor, constant: -10)
         ])
     }
-    
-    
-    
-   
-    
-   
-        
-       
+
+    @objc func buttonPressed(sender: UIButton!) {
+            print("Status is: \(self.statusLabel.text)")
+        }
+    @objc func tapAction(_ sender: UITapGestureRecognizer){
+        guard let imageToPresent = avatarImageView.image else {
+                print("theirs some thing wrong, image should exist")
+                return
+            } 
+        self.presenter?.present(image: imageToPresent) ?? print("Can't present")    
+    }
 }
