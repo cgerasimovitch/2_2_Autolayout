@@ -10,14 +10,13 @@ import UIKit
 
 
 class ProfileViewController: UIViewController, ImagePresenter {
-    ///@IBOutlet weak var profileHeaderView: ProfileHeaderView!
+    
     
     var myImageView = UIImageView()
     var popUpView = UIView()
     let window = UIWindow()
     let closeButton = UIButton()
     let tableView = UITableView()
-    let profileHeaderView = ProfileHeaderView()
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -27,7 +26,7 @@ class ProfileViewController: UIViewController, ImagePresenter {
         tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileHeaderView().profileHeaderId)
         tableView.register(PreviewPhotosHeader.self, forHeaderFooterViewReuseIdentifier: PreviewPhotosHeader().previewHeaderId)
         setupTableView(table: tableView)
-        profileHeaderView.presenter = self
+        //profileHeaderView.presenter = self
     }
     
     
@@ -119,6 +118,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
         switch section {
         case 0:
             let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileHeaderView().profileHeaderId) as! ProfileHeaderView
+            headerView.presenter = self
             return headerView
         case 1:
             let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: PreviewPhotosHeader().previewHeaderId) as! PreviewPhotosHeader
