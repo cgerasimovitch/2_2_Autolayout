@@ -8,48 +8,44 @@
 
 import UIKit
 
-class ProfileHeaderView: UIView {
+class ProfileHeaderView: UITableViewHeaderFooterView {
 
+    let profileHeaderId = "ProfileHeaderView"
     let statusUILabel = UILabel()
+    let avatarImageView = UIImageView()
+    let fullNameLabel = UILabel()
+    let statusLabel = UILabel()
+    let setStatusButton = UIButton()
+    let newButton = UIButton()
+    let textField = UITextField()
     public var presenter: ImagePresenter?
-    @IBOutlet weak var avatarImageView: UIImageView!{
-        didSet{
-            setupImageView()
-        }
-    }
-    
-
-    
-    @IBOutlet weak var fullNameLabel: UILabel!{
-        didSet{
-            setupFullNameLabel()
-        }
-    }
-    
-    @IBOutlet weak var statusLabel: UILabel!{
-        didSet{
-            setupStatusLabel()
-        }
-    }
-    
-    @IBOutlet weak var setStatusButton: UIButton!{
-        didSet{
-            setupSetStatusButton()
-        }
-    }
-    
-    
-        override init(frame: CGRect) {
-            super.init(frame: frame)
-            
-        }
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+        self.contentView.backgroundColor = .lightGray
+        self.contentView.addSubview(avatarImageView)
+        self.contentView.addSubview(fullNameLabel)
+        self.contentView.addSubview(statusLabel)
+        self.contentView.addSubview(setStatusButton)
+        self.contentView.addSubview(textField)
+       
         
+        setupImageView()
+        setupImageViewLayout()
+        setupFullNameLabel()
+        setupFullNameLabelLayout()
+        setupStatusLabel()
+        setupStatusLabelLayout()
+        setupSetStatusButton()
+        setupSetStatusButtonLayout()
+        setupTextField(field: textField)
+        setupTextFieldLayout(field: textField)
+    }
         required init?(coder: NSCoder) {
             super.init(coder: coder)
             setupNewButton()
             presenter = ProfileViewController().self
-            
         }
+    
         
     func setupImageView(){
         addSubview(avatarImageView)
@@ -62,30 +58,72 @@ class ProfileHeaderView: UIView {
         avatarImageView.isUserInteractionEnabled = true
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapAction))
         avatarImageView.addGestureRecognizer(tapRecognizer)
-        
     }
+    func setupImageViewLayout(){
+        avatarImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            
+            avatarImageView.widthAnchor.constraint(equalToConstant: 100),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 100),
+            avatarImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 16),
+            avatarImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16)
+        ])}
     
 
     
     func setupFullNameLabel(){
-        //Add headerUILabel
         
         fullNameLabel.font = .systemFont(ofSize: 18, weight: .bold)
         fullNameLabel.textColor = .black
         fullNameLabel.text = "Hipster Megacat"
-        addSubview(fullNameLabel)
     }
     
+    func setupFullNameLabelLayout(){
+        fullNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            fullNameLabel.heightAnchor.constraint(equalToConstant: 21),
+            fullNameLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 27),
+            fullNameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 27),
+            fullNameLabel.trailingAnchor.constraint(equalTo:  self.contentView.trailingAnchor, constant: 10)
+        ])
+    }
     func setupStatusLabel(){
-        statusLabel.frame = CGRect(x: safeAreaInsets.left + 16, y: safeAreaInsets.top + 34, width: 200, height: 100)
         statusLabel.font = .systemFont(ofSize: 14, weight: .regular)
         statusLabel.textColor = .gray
         statusLabel.text = "Waiting for waiting"
-        addSubview(statusLabel)
+    }
+    
+    func setupStatusLabelLayout(){
+        statusLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            statusLabel.heightAnchor.constraint(equalToConstant: 21),
+            statusLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: -30),
+            statusLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 27),
+            statusLabel.trailingAnchor.constraint(equalTo:  self.contentView.trailingAnchor, constant: 10)
+        ])
+    }
+    
+    
+    func setupTextField(field: UITextField){
+            field.backgroundColor = .white
+            field.layer.cornerRadius = 12
+            field.layer.borderWidth = 1
+            field.layer.borderColor = UIColor.black.cgColor
+            field.font = .systemFont(ofSize: 15, weight: .regular)
+            field.textColor = .black
+    }
+    func setupTextFieldLayout(field: UITextField){
+        field.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            field.heightAnchor.constraint(equalToConstant: 40),
+            field.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 17),
+            field.leadingAnchor.constraint(equalTo: statusLabel.leadingAnchor),
+            field.trailingAnchor.constraint(equalTo:  self.contentView.trailingAnchor, constant: -10)
+            
+        ])
     }
     
     func setupSetStatusButton(){
-        setStatusButton.frame = CGRect(x: 16, y: 100, width: 400 - 32, height: 50)
         setStatusButton.titleLabel?.font = .systemFont(ofSize: statusUILabel.font.pointSize, weight: .regular)
         setStatusButton.setTitle("Show status", for: .normal)
         setStatusButton.setTitleColor(.white, for: .normal)
@@ -96,40 +134,33 @@ class ProfileHeaderView: UIView {
         setStatusButton.layer.shadowRadius = 4
         setStatusButton.layer.shadowColor = UIColor.black.cgColor
         setStatusButton.layer.shadowOpacity = 0.7
-        setStatusButton.addTarget(self, action: #selector(buttonPressed), for: UIControl.Event.touchUpInside)
-        addSubview(setStatusButton)
+        setStatusButton.addTarget(self, action: #selector(setStatusButtonPressed), for: UIControl.Event.touchUpInside)
+        
     }
     
-    func setupNewButton(){
-        let newButton = UIButton()
-        addSubview(newButton)
-        newButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        newButton.frame.size = CGSize(width: 100, height: 50)
-        
-        newButton.setTitle("New button title", for: .normal)
-        newButton.backgroundColor = .yellow
-        newButton.bottomAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
-        newButton.leftAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.leftAnchor).isActive = true
-        newButton.rightAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.rightAnchor).isActive = true
+    @objc func setStatusButtonPressed(sender: UIButton!) {
+        print("Status is: \(self.statusLabel.text)")
         
     }
-        
-        @objc func buttonPressed(sender: UIButton!) {
+    
+    func setupSetStatusButtonLayout(){
+        setStatusButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            setStatusButton.heightAnchor.constraint(equalToConstant: 50),
+            setStatusButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 10),
+            setStatusButton.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10),
+            setStatusButton.trailingAnchor.constraint(equalTo:  self.contentView.trailingAnchor, constant: -10)
+        ])
+    }
+
+    @objc func buttonPressed(sender: UIButton!) {
             print("Status is: \(self.statusLabel.text)")
-            
-            
         }
     @objc func tapAction(_ sender: UITapGestureRecognizer){
-        
-     
         guard let imageToPresent = avatarImageView.image else {
                 print("theirs some thing wrong, image should exist")
                 return
-            }
-        
-        self.presenter?.present(image: imageToPresent) ?? print("Can't present")
-            
+            } 
+        self.presenter?.present(image: imageToPresent) ?? print("Can't present")    
     }
-        
 }
