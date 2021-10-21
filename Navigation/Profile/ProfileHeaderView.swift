@@ -141,7 +141,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     }
     
     @objc func setStatusButtonPressed(sender: UIButton!) {
-        print("Status is: \(self.statusLabel.text)")
+        print("Status is: \(statusLabel.text ?? "")")
         
     }
     
@@ -160,7 +160,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     }
 
     @objc func buttonPressed(sender: UIButton!) {
-            print("Status is: \(self.statusLabel.text)")
+            print("Status is: \(statusLabel.text ?? "")")
         }
     @objc func tapAction(_ sender: UITapGestureRecognizer){
         guard let imageToPresent = avatarImageView.image else {

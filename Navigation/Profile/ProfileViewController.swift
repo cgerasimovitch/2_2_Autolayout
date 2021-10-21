@@ -10,8 +10,7 @@ import UIKit
 import iOSIntPackage
 
 class ProfileViewController: UIViewController, ImagePresenter {
-    let imageProcessor = iOSIntPackage.ImageProcessor()
-    
+    var imageProcessor = iOSIntPackage.ImageProcessor()
     var myImageView = UIImageView()
     var popUpView = UIView()
     let window = UIWindow()
@@ -111,10 +110,15 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
             let feed = FeedArray()
             let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.cellId, for: indexPath) as! PostTableViewCell
             cell.authorLabel.text = feed.feedArray[indexPath.row].author
+            
             cell.postImageView.image = UIImage(named: feed.feedArray[indexPath.row].image ?? "cat.png")
-            var startImage =  cell.postImageView.image
-            var resultImage = UIImage()
-            imageProcessor.processImage(sourceImage: cell.postImageView.image!, filter: .colorInvert, completion: applyFilter())
+            var startImage =  cell.postImageView.image!
+            imageProcessor.processImage(sourceImage: startImage, filter: .motionBlur(radius: 12)) { (resultImage) in
+                startImage = resultImage!
+            }
+            cell.postImageView.image = startImage
+            
+           
             cell.descriptionLabel.text = feed.feedArray[indexPath.row].description
             cell.likesLabel.text = "Likes: \(feed.feedArray[indexPath.row].likes!)"
             cell.viewsLabel.text = "Views: \(feed.feedArray[indexPath.row].views!) "
@@ -164,3 +168,4 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
         }
     }
 }
+
