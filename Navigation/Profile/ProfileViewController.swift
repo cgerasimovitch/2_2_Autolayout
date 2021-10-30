@@ -11,7 +11,7 @@ import UIKit
 
 class ProfileViewController: UIViewController, ImagePresenter {
     
-    
+    public var userService: UserService?
     var myImageView = UIImageView()
     var popUpView = UIView()
     let window = UIWindow()
@@ -32,7 +32,6 @@ class ProfileViewController: UIViewController, ImagePresenter {
         tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileHeaderView().profileHeaderId)
         tableView.register(PreviewPhotosHeader.self, forHeaderFooterViewReuseIdentifier: PreviewPhotosHeader().previewHeaderId)
         setupTableView(table: tableView)
-        //profileHeaderView.presenter = self
     }
     
     
