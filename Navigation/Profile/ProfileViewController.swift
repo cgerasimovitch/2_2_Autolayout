@@ -17,6 +17,11 @@ class ProfileViewController: UIViewController, ImagePresenter {
     let window = UIWindow()
     let closeButton = UIButton()
     let tableView = UITableView()
+    public var userName = ""
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         #if DEBUG
@@ -25,6 +30,18 @@ class ProfileViewController: UIViewController, ImagePresenter {
         #if RELEASE
         self.view.backgroundColor = UIColor.systemYellow
         #endif
+        setupTablesAndCells()
+    }
+    
+    init(userService: UserService, userName: String) {
+        <#statements#>
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupTablesAndCells(){
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.cellId)
@@ -33,8 +50,6 @@ class ProfileViewController: UIViewController, ImagePresenter {
         tableView.register(PreviewPhotosHeader.self, forHeaderFooterViewReuseIdentifier: PreviewPhotosHeader().previewHeaderId)
         setupTableView(table: tableView)
     }
-    
-    
     
     func present(image: UIImage){
         print("Present started")
@@ -75,7 +90,9 @@ class ProfileViewController: UIViewController, ImagePresenter {
         ])
                                         
     }
-    
+    func addInit(){
+        
+    }
 }
 
 

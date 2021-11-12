@@ -197,9 +197,9 @@
 		846BF181267126A400716517 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				846BF182267126BB00716517 /* ProfileViewController.swift */,
 				849A44BA2673B67B00913CA5 /* LogInViewController.swift */,
 				84454AF92687C1A900C10787 /* PhotosTableViewCell.swift */,
-				846BF182267126BB00716517 /* ProfileViewController.swift */,
 				844B1DA026B2B1CC00BD8481 /* PreviewPhotosCell.swift */,
 				846BF186267126EB00716517 /* ProfileHeaderView.swift */,
 				844A8AA126B45605007ACC22 /* PreviewPhotosHeader.swift */,
