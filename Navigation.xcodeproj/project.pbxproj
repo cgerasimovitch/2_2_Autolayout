@@ -41,7 +41,6 @@
 		84CCF88727010AC300C82BAB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060782C9250CEE7200A87020 /* Post.swift */; };
 		84EF9B0D2715CF50000315B4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF9B0C2715CF50000315B4 /* User.swift */; };
 		84EF9B102715D028000315B4 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF9B0F2715D028000315B4 /* UserService.swift */; };
-		84EF9B132715D262000315B4 /* CurrentUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EF9B122715D262000315B4 /* CurrentUserService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,7 +105,6 @@
 		84CCF87C27010AB600C82BAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84EF9B0C2715CF50000315B4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		84EF9B0F2715D028000315B4 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		84EF9B122715D262000315B4 /* CurrentUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +164,6 @@
 				843B6CBF2680FBC2009A3EE8 /* VersionFile */,
 				84EF9B0C2715CF50000315B4 /* User.swift */,
 				84EF9B0F2715D028000315B4 /* UserService.swift */,
-				84EF9B122715D262000315B4 /* CurrentUserService.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -351,7 +348,6 @@
 				844A8AA226B45605007ACC22 /* PreviewPhotosHeader.swift in Sources */,
 				844B1DA126B2B1CC00BD8481 /* PreviewPhotosCell.swift in Sources */,
 				060782C6250CEB0A00A87020 /* InfoViewController.swift in Sources */,
-				84EF9B132715D262000315B4 /* CurrentUserService.swift in Sources */,
 				8458A59A26B87E7700B5AD64 /* PhotosViewController.swift in Sources */,
 				846BF183267126BB00716517 /* ProfileViewController.swift in Sources */,
 				060782B4250CE27700A87020 /* SceneDelegate.swift in Sources */,

@@ -43,7 +43,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         required init?(coder: NSCoder) {
             super.init(coder: coder)
             setupNewButton()
-            presenter = ProfileViewController(coder: <#NSCoder#>).self
         }
     
         

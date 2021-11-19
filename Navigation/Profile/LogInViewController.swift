@@ -187,10 +187,8 @@ class LogInViewController: UIViewController {
     }
 
     @objc func buttonPressed(sender: UIButton!) {
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let profileViewController = storyBoard.instantiateViewController(withIdentifier: "ProfileViewController")
-        profileViewController.userName
-        self.navigationController?.pushViewController(profileViewController, animated: true)
+        let vc = ProfileViewController(userService: CurrentUserService() as UserService, userName: loginTextField.text!)
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     

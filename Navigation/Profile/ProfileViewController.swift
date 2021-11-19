@@ -11,13 +11,36 @@ import UIKit
 
 class ProfileViewController: UIViewController, ImagePresenter {
     
-    public var userService: UserService?
+    let userService: UserService?
+    var userName: String?
+    
+    
+    init(userService: UserService, userName: String){
+        
+        self.userService = userService
+        self.userName = userName
+        super.init(nibName: nil, bundle: nil)
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    
+  
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero)
+        tableView.dataSource = self
+        return tableView
+    }()
+    
     var myImageView = UIImageView()
     var popUpView = UIView()
     let window = UIWindow()
     let closeButton = UIButton()
-    let tableView = UITableView()
-    public var userName = ""
+    
     
     
     
@@ -33,16 +56,11 @@ class ProfileViewController: UIViewController, ImagePresenter {
         setupTablesAndCells()
     }
     
-    init(userService: UserService, userName: String) {
-        <#statements#>
-    }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    
     
     func setupTablesAndCells(){
-        tableView.dataSource = self
+        
         tableView.delegate = self
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.cellId)
         tableView.register(PreviewPhotosCell.self, forCellReuseIdentifier: PreviewPhotosCell.cellId)
@@ -90,9 +108,7 @@ class ProfileViewController: UIViewController, ImagePresenter {
         ])
                                         
     }
-    func addInit(){
-        
-    }
+    
 }
 
 

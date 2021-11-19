@@ -11,3 +11,32 @@ import Foundation
 protocol UserService{
     func fetchUser(fullname: String) -> User
 }
+
+class CurrentUserService: UserService{
+    
+    
+    var currentUser = User()
+    var usersArray = [User()]
+    func fetchUser(fullname: String) -> User {
+        return User()
+    }
+    
+    func returnUser() -> User{
+        if usersArray.contains(where: { (item) -> Bool in
+            if item.fullname == currentUser.fullname {
+               return true
+            }
+            else {
+                return false
+            }
+        }){
+            return fetchUser(fullname:currentUser.fullname!)
+        }
+        else{
+            return User()
+        }
+        
+    }
+   
+    
+}

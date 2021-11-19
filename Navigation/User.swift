@@ -9,15 +9,7 @@
 import Foundation
 
 class User{
-    public var fullname: String?
-    public var avatar: String?
-    public var status: String?
-    
-    public init(fullname: String, avatar: String,
-                status: String) {
-        self.fullname = fullname
-        self.avatar = avatar
-        self.status = status
-        
-      }
+    var fullname: String?
+    var avatar: String?
+    var status: String?
 }
