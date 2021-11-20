@@ -11,25 +11,63 @@ import UIKit
 
 class ProfileViewController: UIViewController, ImagePresenter {
     
+    let userService: UserService?
+    var userName: String?
+    
+    
+    init(userService: UserService, userName: String){
+        
+        self.userService = userService
+        self.userName = userName
+        super.init(nibName: nil, bundle: nil)
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    
+  
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero)
+        tableView.dataSource = self
+        return tableView
+    }()
     
     var myImageView = UIImageView()
     var popUpView = UIView()
     let window = UIWindow()
     let closeButton = UIButton()
-    let tableView = UITableView()
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
+        #if DEBUG
+        self.view.backgroundColor = UIColor.systemGray2
+        #endif
+        #if RELEASE
+        self.view.backgroundColor = UIColor.systemYellow
+        #endif
+        setupTablesAndCells()
+    }
+    
+    
+    
+    
+    func setupTablesAndCells(){
+        
         tableView.delegate = self
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.cellId)
         tableView.register(PreviewPhotosCell.self, forCellReuseIdentifier: PreviewPhotosCell.cellId)
         tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileHeaderView().profileHeaderId)
         tableView.register(PreviewPhotosHeader.self, forHeaderFooterViewReuseIdentifier: PreviewPhotosHeader().previewHeaderId)
         setupTableView(table: tableView)
-        //profileHeaderView.presenter = self
     }
-    
-    
     
     func present(image: UIImage){
         print("Present started")
@@ -103,10 +141,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource{
             let feed = FeedArray()
             let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.cellId, for: indexPath) as! PostTableViewCell
             cell.authorLabel.text = feed.feedArray[indexPath.row].author
-            cell.postImageView.image = UIImage(named: feed.feedArray[indexPath.row].image)
+            cell.postImageView.image = UIImage(named: feed.feedArray[indexPath.row].image ?? "cat.png")
             cell.descriptionLabel.text = feed.feedArray[indexPath.row].description
-            cell.likesLabel.text = "Likes: \(feed.feedArray[indexPath.row].likes)"
-            cell.viewsLabel.text = "Views: \(feed.feedArray[indexPath.row].views) "
+            cell.likesLabel.text = "Likes: \(feed.feedArray[indexPath.row].likes!)"
+            cell.viewsLabel.text = "Views: \(feed.feedArray[indexPath.row].views!) "
                 return cell
         default:
             return UITableViewCell()
